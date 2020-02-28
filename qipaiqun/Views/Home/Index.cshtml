@@ -1,0 +1,3167 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link href="~/css/idangerous.swiper.css" rel="stylesheet" />
+<style type="text/css">
+    .title-f {
+        width:100%;
+    }
+    .sub-nav {
+        display: none;
+        position: absolute;
+        z-index: 10;
+        width: 137px;
+        background: #4ab043;
+    }
+
+        .sub-nav a {
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: white;
+        }
+
+            .sub-nav a:first-child, .sub-nav a:nth-child(2), .sub-nav a:nth-child(3) {
+                border-bottom: 1px solid #fff;
+            }
+
+            .sub-nav a:hover {
+                color: white !important;
+                background: #6cc944;
+            }
+
+    .t-right {
+        float: right;
+    }
+
+    .l-type .cate_link {
+        cursor: pointer;
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        border: 1px solid #4ab043;
+        border-radius: 100px;
+        padding: 0 10px;
+        margin: 0 10px 10px 0;
+    }
+
+        .l-type .cate_link a {
+            font-size: 14px;
+        }
+
+    .ui-friend {
+        background: #2d2d2d;
+        height: auto;
+        display: contents;
+    }
+
+    .g-inner {
+        width: 1200px;
+        padding: 0 10px;
+        margin: 0 auto;
+    }
+
+    .ui-lineList.ext-friend {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    .ui-lineList {
+        overflow: hidden;
+        font-size: 0;
+    }
+
+    .ui-lineList__item {
+        border-color: #404040;
+        margin-bottom: 10px;
+        margin-right: 15px;
+    }
+
+    .ui-lineList__tit {
+        position: relative;
+        background: #252525;
+        padding: 5px 10px;
+    }
+
+    .dwCommonFooter {
+        clear: both;
+        width: 100%;
+        margin: 0 auto;
+        padding: 25px 0;
+        background: #222;
+        font-size: 12px;
+    }
+
+    .dwCommonFooter__row {
+        margin: 0 auto 8px;
+        text-align: center;
+        line-height: 1;
+    }
+
+    .dwCommonFooter a {
+        margin: 0 5px;
+        color: #666;
+    }
+
+    .dwCommonFooter__split {
+        opacity: .6;
+    }
+
+    .footer * {
+        color: #8e8e8e;
+    }
+
+    .dwCommonFooter__row p {
+        margin-bottom: 8px;
+    }
+
+    .t-left a {
+        color: red
+    }
+</style>
+<style>
+    .swiper-container img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-button-prev {
+        background: url("/images/left1.png");
+        width: 44px;
+    }
+
+    .swiper-button-next {
+        background: url("/images/right1.png");
+        width: 44px;
+    }
+
+    #ad_left, #ad_right {
+        position: fixed;
+        width: 120px;
+        height: 300px;
+        z-index: 10001;
+        top: 50%;
+        margin-top: -150px;
+    }
+
+    #ad_left {
+        left: 3px;
+    }
+
+    #ad_right {
+        right: 3px
+    }
+
+        #ad_left a, #ad_right a {
+            color: #333
+        }
+
+    .more {
+        float: right
+    }
+
+    .shijian1 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        font-size: 12px;
+        padding: 2px 5px;
+        z-index: 2;
+    }
+    /*.news2 li:nth-child(2){position: relative;top: -20px;}*/
+    .shijian2 {
+        position: relative;
+        height: 0;
+        bottom: 20px;
+        right: 0;
+        float: right;
+        color: #fff;
+        z-index: 2;
+        display: none;
+    }
+
+    .news2 li:nth-child(1) .shijian2 {
+        display: block
+    }
+
+    .shijian2 span {
+        width: 100%;
+        height: 20px;
+        background-color: rgba(0,0,0,0.5);
+        color: #ffffff;
+        padding: 2px 5px;
+        font-size: 12px;
+    }
+
+    .shijian3 {
+        position: relative;
+        height: 0;
+        bottom: 20px;
+        right: 0;
+        float: right;
+        color: #fff;
+        z-index: 2;
+    }
+
+        .shijian3 span {
+            width: 100%;
+            height: 20px;
+            background-color: rgba(0,0,0,0.5);
+            color: #ffffff;
+            padding: 2px 5px;
+            font-size: 12px;
+        }
+
+    #content {
+        background-color: white
+    }
+
+    .m1200 {
+        width: 1124px;
+        background-color: white;
+        margin: 0 auto;
+    }
+
+    .zhuanti li {
+        width: 259px;
+        margin: 21px 21px 0 0;
+        float: left;
+    }
+
+        .zhuanti li:nth-child(4), .zhuanti li:nth-child(8) {
+            margin-right: 0
+        }
+
+    .zhuanti img {
+        width: 259px !important;
+        height: 138px !important;
+    }
+</style>
+
+<div class="m1200">
+    <div class="container">
+
+        <script>
+            //$(function () {
+                var bg_l = ($(window).width() - 1124) / 2;
+                var bg_r = ($(window).width() - 1124) / 2;
+                $('.bg_l').css('width', bg_l);
+                $('.bg_r').css('width', bg_r);
+            //});
+        </script>
+        <div class="wrap" id="content">
+            <div class="row column">
+                <div class="index-col1">
+                    <ul class="cate-menu">
+                        <li>
+                            <p>棋牌游戏群<i class="icon icon-white-sj"></i></p>
+                            <a href="/qun/bmajiangqun" target="_blank" title="麻将群">麻将群</a>
+                            <a href="/qun/bdoudizhuqun" target="_blank" title="斗地主群">斗地主群</a>
+                            <a href="/qun/bpaodekuaiqun" target="_blank" title="跑得快群">跑得快群</a>
+                            <a href="/qun/bdouniuqun" target="_blank" title="棋牌游戏群">棋牌游戏群</a>
+                            <div class="cate-menu-list">
+                                <ul>
+                                    <li><a href="/qun/bdouniuqun" target="_blank" title="2019游戏群">2019游戏群</a></li>
+                                    <li><a href="/qipai" target="_blank" title="棋牌平台">棋牌平台</a></li>
+                                    <li><a href="/qun/ayiyang_bpaodekuaiqun" target="_blank" title="跑得快群">跑得快群</a></li>
+                                    <li><a href="/news/9749.html" target="_blank" title="棋牌游戏群防封">棋牌游戏群防封</a></li>
+                                    <li><a href="/qun/bdezhoupukequn" target="_blank" title="扑克群">扑克群</a></li>
+                                    <li><a href="/qun/bpaohuziqun" target="_blank" title="跑胡子群">跑胡子群</a></li>
+                                    <li><a href="https://m.qipaiqun.com/news/11029.html" target="_blank" title="孝感卡五星群">孝感卡五星群</a></li>
+                                    <li><a href="/qun/bqipaikaifa" target="_blank" title="棋牌开发群">棋牌开发群</a></li>
+                                    <li><a href="/qun/awuhan_bmajiangqun" target="_blank" title="武汉麻将群">武汉麻将群</a></li>
+                                    <li><a href="/qun/achengdu_bmajiangqun" target="_blank" title="成都麻将群">成都麻将群</a></li>
+                                    <li><a href="/qun/aguangzhou_bmajiangqun" target="_blank" title="广州麻将群">广州麻将群</a></li>
+                                    <li><a href="/qun/achangsha_bmajiangqun" target="_blank" title="长沙麻将群">长沙麻将群</a></li>
+                                    <li><a href="/qun/cyikuqipaishijie" target="_blank" title="亿酷平台游戏群">亿酷平台游戏群</a></li>
+                                    <li><a href="/qun/ashanghai_bdoudizhuqun" target="_blank" title="上海麻将群">上海麻将群</a></li>
+                                    <li><a href="/qun/ashenzhen_bdoudizhuqun" target="_blank" title="深圳斗地主群">深圳斗地主群</a></li>
+                                    <li><a href="/qun/ananjing_bdoudizhuqun" target="_blank" title="南京斗地主群">南京斗地主群</a></li>
+                                    <li><a href="/qun/aguangzhou_bdoudizhuqun" target="_blank" title="广州斗地主群">广州斗地主群</a></li>
+                                    <li><a href="/qun/abeijing_bdoudizhuqun" target="_blank" title="北京斗地主群">北京斗地主群</a></li>
+                                    <li><a href="/tag/%E6%A3%8B%E7%89%8C%E5%A8%B1%E4%B9%90%E5%B9%B3%E5%8F%B0" target="_blank" title="棋牌娱乐平台">棋牌娱乐平台</a></li>
+                                    <li><a href="/qun/azhongqing_bmajiangqun" target="_blank" title="重庆麻将群">重庆麻将群</a></li>
+                                    <li><a href="/qun/achangsha_bpaodekuaiqun" target="_blank" title="长沙跑得快群">长沙跑得快群</a></li>
+                                    <li><a href="/qun/ananjing_bmajiangqun" target="_blank" title="南京麻将群">南京麻将群</a></li>
+                                    <li><a href="/qun/ashanghai_bdezhoupukequn" target="_blank" title="上海扑克群">上海扑克群</a></li>
+                                    <li><a href="/qun/awuhan_bdezhoupukequn" target="_blank" title="武汉扑克群">武汉扑克群</a></li>
+                                    <li><a href="/qun/cfatiaoyule" target="_blank" title="发条娱乐代理群">发条娱乐代理群</a></li>
+                                    <li><a href="/qun/achangsha_bpaohuziqun" target="_blank" title="长沙跑胡子群">长沙跑胡子群</a></li>
+                                    <li><a href="/qun/ayongzhou_bpaohuziqun" target="_blank" title="永州跑胡子群">永州跑胡子群</a></li>
+                                    <li><a href="/zhuanti/459" target="_blank" title="手机棋牌游戏平台">手机棋牌游戏平台</a></li>
+                                    <li><a href="/qun/aguilin_bpaohuziqun" target="_blank" title="桂林字牌群">桂林字牌群</a></li>
+                                </ul>
+                                <div class="wechat-list">
+                                    <a href="/qun/26743.html" title="火萤棋牌 万能娱乐 最高返点" target="_blank">
+                                        <img class="cover" src="./images/2020022544276842.jpg" alt="火萤棋牌 万能娱乐 最高返点">
+                                        <img class="hover" src="./images/2020022534850975.jpg" alt="火萤棋牌 万能娱乐 最高返点二维码">
+                                    </a>
+                                    <a href="/qun/26569.html" title="红桃娱乐 火萤棋牌 超凡娱乐 发条娱乐 方块娱乐" target="_blank">
+                                        <img class="cover" src="./images/2020021937979765.jpg" alt="红桃娱乐 火萤棋牌 超凡娱乐 发条娱乐 方块娱乐">
+                                        <img class="hover" src="./images/2020021986693870.jpg" alt="红桃娱乐 火萤棋牌 超凡娱乐 发条娱乐 方块娱乐二维码">
+                                    </a>
+                                    <a href="/qun/26815.html" title="【招财娱乐】奖金多多" target="_blank">
+                                        <img class="cover" src="./images/73.png" alt="【招财娱乐】奖金多多">
+                                        <img class="hover" src="./images/2020022619879188.jpg" alt="【招财娱乐】奖金多多二维码">
+                                    </a>
+                                    <a href="/qun/26793.html" title="地方麻将代理交流2群" target="_blank">
+                                        <img class="cover" src="./images/15.png" alt="地方麻将代理交流2群">
+                                        <img class="hover" src="./images/2020022647070213.jpg" alt="地方麻将代理交流2群二维码">
+                                    </a>
+                                    <a href="/qun/26810.html" title="迪口游戏群，大同人的棋牌游戏" target="_blank">
+                                        <img class="cover" src="./images/2020022647362927.jpg" alt="迪口游戏群，大同人的棋牌游戏">
+                                        <img class="hover" src="./images/2020022675736941.jpg" alt="迪口游戏群，大同人的棋牌游戏二维码">
+                                    </a>
+                                    <a href="/qun/26776.html" title="分文不收押金的好玩游戏" target="_blank">
+                                        <img class="cover" src="./images/193.png" alt="分文不收押金的好玩游戏">
+                                        <img class="hover" src="./images/2020022641292469.jpg" alt="分文不收押金的好玩游戏二维码">
+                                    </a>
+                                    <a href="/qun/26812.html" title="明星代言的棋牌 您还在等什么 赶紧下载吧！" target="_blank">
+                                        <img class="cover" src="./images/2020022623573936.jpg" alt="明星代言的棋牌 您还在等什么 赶紧下载吧！">
+                                        <img class="hover" src="./images/2020022615107101.jpg" alt="明星代言的棋牌 您还在等什么 赶紧下载吧！二维码">
+                                    </a>
+                                    <a href="/qun/26840.html" title="山东保皇105记牌器推广钉钉群！" target="_blank">
+                                        <img class="cover" src="./images/2020022796981561.jpg" alt="山东保皇105记牌器推广钉钉群！">
+                                        <img class="hover" src="./images/2020022718580652.jpg" alt="山东保皇105记牌器推广钉钉群！二维码">
+                                    </a>
+                                    <a href="/qun/25175.html" title="发条娱乐.我的棋牌官方直招" target="_blank">
+                                        <img class="cover" src="./images/79.png" alt="发条娱乐.我的棋牌官方直招">
+                                        <img class="hover" src="./images/2019122092264629.jpg" alt="发条娱乐.我的棋牌官方直招二维码">
+                                    </a>
+                                    <a href="/qun/26804.html" title="乐天娱乐 乐天娱乐 乐天娱乐招商代理" target="_blank">
+                                        <img class="cover" src="./images/48.png" alt="乐天娱乐 乐天娱乐 乐天娱乐招商代理">
+                                        <img class="hover" src="./images/2020022617447260.jpg" alt="乐天娱乐 乐天娱乐 乐天娱乐招商代理二维码">
+                                    </a>
+                                    <a href="/qun/26839.html" title="宁国同城游戏推广微信群，一起玩宁国三叉子！" target="_blank">
+                                        <img class="cover" src="./images/2020022729849987.jpg" alt="宁国同城游戏推广微信群，一起玩宁国三叉子！">
+                                        <img class="hover" src="./images/2020022760282243.jpg" alt="宁国同城游戏推广微信群，一起玩宁国三叉子！二维码">
+                                    </a>
+                                    <a href="/qun/26760.html" title="135诚招全国棋牌总代" target="_blank">
+                                        <img class="cover" src="./images/2020022530652416.jpg" alt="135诚招全国棋牌总代">
+                                        <img class="hover" src="./images/2020022533329434.jpg" alt="135诚招全国棋牌总代二维码">
+                                    </a>
+                                    <a href="/qun/26817.html" title="永盛棋牌官方直招总代理" target="_blank">
+                                        <img class="cover" src="./images/2020022630082959.jpg" alt="永盛棋牌官方直招总代理">
+                                        <img class="hover" src="./images/2020022631169700.jpg" alt="永盛棋牌官方直招总代理二维码">
+                                    </a>
+                                    <a href="/qun/26819.html" title="哪有麻将微信群" target="_blank">
+                                        <img class="cover" src="./images/183.png" alt="哪有麻将微信群">
+                                        <img class="hover" src="./images/2020022785391157.jpg" alt="哪有麻将微信群二维码">
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <p>棋牌游戏代理<i class="icon icon-white-sj"></i></p>
+                            <a href="/zhaoshang/bdailizm" target="_blank" title="代理招募">代理招募</a>
+                            <a href="/zhaoshang/bwanjiazm" target="_blank" title="个人代理">个人代理</a>
+                            <a href="/zhaoshang/bpaiyouhf" target="_blank" title="牌友互粉">牌友互粉</a>
+                            <a href="/zhaoshang/bdailijm" target="_blank" title="代理加盟">代理加盟</a>
+                            <div class="cate-menu-list">
+                                <ul>
+                                    <li><a href="/zhaoshang/18373.html" target="_blank" title="麻将代理">麻将代理</a></li>
+                                    <li><a href="/zhaoshang/abeijing_bdailizm" target="_blank" title="棋牌游戏代理">棋牌游戏代理</a></li>
+                                    <li><a href="/zhaoshang/18371.html" target="_blank" title="跑得快代理">跑得快代理</a></li>
+                                    <li><a href="/news/12032.html" target="_blank" title="斗地主代理">斗地主代理</a></li>
+                                    <li><a href="https://m.qipaiqun.com/zhaoshang/17304.html" target="_blank" title="二人麻将代理">二人麻将代理</a></li>
+                                    <li><a href="/zhaoshang/ahaerbin_bdailizm" target="_blank" title="哈尔滨麻将代理">哈尔滨麻将代理</a></li>
+                                    <li><a href="https://m.qipaiqun.com/news/11090.html" target="_blank" title="潮汕麻将代理">潮汕麻将代理</a></li>
+                                    <li><a href="/zhaoshang/achangsha_bdailizm" target="_blank" title="长沙麻将代理">长沙麻将代理</a></li>
+                                    <li><a href="/zhaoshang/azhengzhou_bdailizm" target="_blank" title="郑州扑克游戏代理">郑州扑克游戏代理</a></li>
+                                    <li><a href="/zhaoshang/azhongqing_bdailizm" target="_blank" title="血战麻将找麻友">血战麻将找麻友</a></li>
+                                    <li><a href="/zhaoshang/cpipi_bdailizm" target="_blank" title="皮皮游戏代理">皮皮游戏代理</a></li>
+                                    <li><a href="/zhaoshang/cxianlai_bdailizm" target="_blank" title="闲来游戏代理">闲来游戏代理</a></li>
+                                    <li><a href="/zhaoshang/cbaijindao_bdailizm" target="_blank" title="白金岛代理">白金岛代理</a></li>
+                                    <li><a href="/zhaoshang/cxianyi_bdailizm" target="_blank" title="闲逸游戏代理">闲逸游戏代理</a></li>
+                                    <li><a href="/zhaoshang/cweile_bdailizm" target="_blank" title="微乐大厅代理">微乐大厅代理</a></li>
+                                    <li><a href="/zhaoshang/ctangrenyou_bdailizm" target="_blank" title="唐人游代理">唐人游代理</a></li>
+                                    <li><a href="/zhaoshang/cshengjingqipai_bdailizm" target="_blank" title="盛京游戏代理">盛京游戏代理</a></li>
+                                    <li><a href="/zhaoshang/cwanbei_bdailizm" target="_blank" title="玩呗斗牌代理">玩呗斗牌代理</a></li>
+                                    <li><a href="/zhuanti/334" target="_blank" title="棋牌游戏赚钱">棋牌游戏赚钱</a></li>
+                                    <li><a href="/zhuanti/69" target="_blank" title="手机棋牌">手机棋牌</a></li>
+                                    <li><a href="/zhuanti/85" target="_blank" title="棋牌游戏平台">棋牌游戏平台</a></li>
+                                    <li><a href="/tag/%E6%A3%8B%E7%89%8C%E6%8E%A8%E5%B9%BF" target="_blank" title="棋牌代理推广">棋牌代理推广</a></li>
+                                    <li><a href="/tag/%E5%85%8D%E8%B4%B9%E6%A3%8B%E7%89%8C%E4%BB%A3%E7%90%86" target="_blank" title="免费棋牌代理">免费棋牌代理</a></li>
+                                    <li><a href="/zhuanti/393" target="_blank" title="线上棋牌平台">线上棋牌平台</a></li>
+                                    <li><a href="/tag/%E7%BD%91%E7%BB%9C%E6%A3%8B%E7%89%8C%E4%BB%A3%E7%90%86" target="_blank" title="网络棋牌代理">网络棋牌代理</a></li>
+                                    <li><a href="/zhuanti/22" target="_blank" title="棋牌平台出租">棋牌平台出租</a></li>
+                                    <li><a href="/tag/1majiangyinshang" target="_blank" title="棋牌银商问题">棋牌银商问题</a></li>
+                                    <li><a href="/zhaoshang/9270.html" target="_blank" title="棋牌总代">棋牌总代</a></li>
+                                    <li><a href="/zhuanti/20" target="_blank" title="老棋牌游戏平台">老棋牌游戏平台</a></li>
+                                    <li><a href="/zhuanti/57" target="_blank" title="玩棋牌赚钱">玩棋牌赚钱</a></li>
+                                </ul>
+                                <div class="wechat-list" style="bottom: 5px;">
+                                    <a href="/zhaoshang/18509.html" title="乐天棋牌 乐天棋牌招代理" target="_blank">
+                                        <img class="cover" src="./images/37.png" alt="乐天棋牌 乐天棋牌招代理">
+                                        <img class="hover" src="./images/2020022677709784.jpg" alt="乐天棋牌 乐天棋牌招代理二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18508.html" title="跑得快群诚邀代理啦，会推广的朋友赶紧来！" target="_blank">
+                                        <img class="cover" src="./images/2020022612007736.jpg" alt="跑得快群诚邀代理啦，会推广的朋友赶紧来！">
+                                        <img class="hover" src="./images/2020022688799941.jpg" alt="跑得快群诚邀代理啦，会推广的朋友赶紧来！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18510.html" title="寻找24小时闲来广东麻将群！" target="_blank">
+                                        <img class="cover" src="./images/2020022691187396.jpg" alt="寻找24小时闲来广东麻将群！">
+                                        <img class="hover" src="./images/2020022675530451.jpg" alt="寻找24小时闲来广东麻将群！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18532.html" title="麻将代理推广渠道_高效优化看这里！" target="_blank">
+                                        <img class="cover" src="./images/2020022757740739.jpg" alt="麻将代理推广渠道_高效优化看这里！">
+                                        <img class="hover" src="./images/2020022714628684.jpg" alt="麻将代理推广渠道_高效优化看这里！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18533.html" title="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！" target="_blank">
+                                        <img class="cover" src="./images/2020022799791783.jpg" alt="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！">
+                                        <img class="hover" src="./images/2020022736113433.jpg" alt="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18531.html" title="同城游红十大力招募推广代理群主，免费培训包上岗！" target="_blank">
+                                        <img class="cover" src="./images/2020022765100758.jpg" alt="同城游红十大力招募推广代理群主，免费培训包上岗！">
+                                        <img class="hover" src="./images/2020022720482250.jpg" alt="同城游红十大力招募推广代理群主，免费培训包上岗！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18511.html" title="全网最火牛王80招代理" target="_blank">
+                                        <img class="cover" src="./images/2020022626425455.jpg" alt="全网最火牛王80招代理">
+                                        <img class="hover" src="./images/2020022683041341.jpg" alt="全网最火牛王80招代理二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18534.html" title="嘎巴锅棋牌游戏代理，棋牌专业问答！" target="_blank">
+                                        <img class="cover" src="./images/2020022782147276.jpg" alt="嘎巴锅棋牌游戏代理，棋牌专业问答！">
+                                        <img class="hover" src="./images/2020022738341992.jpg" alt="嘎巴锅棋牌游戏代理，棋牌专业问答！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18505.html" title="微信聊呗赚钱，能做的来一个！" target="_blank">
+                                        <img class="cover" src="./images/2020022659965019.jpg" alt="微信聊呗赚钱，能做的来一个！">
+                                        <img class="hover" src="./images/2020022682741422.jpg" alt="微信聊呗赚钱，能做的来一个！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18493.html" title="友谊娱乐【官方特邀】" target="_blank">
+                                        <img class="cover" src="./images/26.png" alt="友谊娱乐【官方特邀】">
+                                        <img class="hover" src="./images/2020022576024776.jpg" alt="友谊娱乐【官方特邀】二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18517.html" title="凯旋娱乐2强势回归招收各种玩家及代理刷手.×" target="_blank">
+                                        <img class="cover" src="./images/2020022621614896.jpg" alt="凯旋娱乐2强势回归招收各种玩家及代理刷手.×">
+                                        <img class="hover" src="./images/2020022616854267.jpg" alt="凯旋娱乐2强势回归招收各种玩家及代理刷手.×二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18526.html" title="兜趣跑得快代理推广,高效推广，优化效果好" target="_blank">
+                                        <img class="cover" src="./images/2020022736927463.jpg" alt="兜趣跑得快代理推广,高效推广，优化效果好">
+                                        <img class="hover" src="./images/2020022784248438.jpg" alt="兜趣跑得快代理推广,高效推广，优化效果好二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18537.html" title="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！" target="_blank">
+                                        <img class="cover" src="./images/2020022726384674.jpg" alt="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！">
+                                        <img class="hover" src="./images/2020022792054192.jpg" alt="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！二维码">
+                                    </a>
+                                    <a href="/zhaoshang/18472.html" title="需要做代理一级代理的来，茶水丰厚" target="_blank">
+                                        <img class="cover" src="./images/2020022599026345.jpg" alt="需要做代理一级代理的来，茶水丰厚">
+                                        <img class="hover" src="./images/2020022522085060.jpg" alt="需要做代理一级代理的来，茶水丰厚二维码">
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="br15">
+                            <p>棋牌游戏平台<i class="icon icon-white-sj"></i></p>
+                            <a href="/qipai/pipi" target="_blank" title="皮皮">皮皮</a>
+                            <a href="/qipai/xiaoyao" target="_blank" title="小吆">小吆</a>
+                            <a href="/qipai/baijindao" target="_blank" title="白金岛">白金岛</a>
+                            <a href="/qipai/xianyi" target="_blank" title="闲逸">闲逸</a>
+                            <a href="/qipai/xianyunge" target="_blank" title="闲云阁">闲云阁</a>
+                            <div class="cate-menu-list">
+                                <ul>
+                                    <li><a href="/qipai/bokechengshi" target="_blank" title="波克城市">波克城市</a></li>
+                                    <li><a href="/qipai/xianlai" target="_blank" title="闲来">闲来</a></li>
+                                    <li><a href="/qipai/tongchengyou" target="_blank" title="同城游">同城游</a></li>
+                                    <li><a href="/qipai/longyu" target="_blank" title="龙宇棋牌">龙宇棋牌</a></li>
+                                    <li><a href="/qipai/jixiang" target="_blank" title="吉祥游戏">吉祥游戏</a></li>
+                                    <li><a href="/qipai/tuyou" target="_blank" title="途游">途游</a></li>
+                                    <li><a href="/qipai/tangrenyou" target="_blank" title="唐人游">唐人游</a></li>
+                                    <li><a href="/qipai/yingle" target="_blank" title="赢乐棋牌">赢乐棋牌</a></li>
+                                    <li><a href="/qipai/laoyou" target="_blank" title="老友">老友</a></li>
+                                    <li><a href="/qipai/JJbisai" target="_blank" title="JJ比赛">JJ比赛</a></li>
+                                    <li><a href="/qipai/qinpeng" target="_blank" title="亲朋">亲朋</a></li>
+                                    <li><a href="/qipai/youxichayuan" target="_blank" title="游戏茶苑">游戏茶苑</a></li>
+                                    <li><a href="/qipai/mingxingsanqueyi" target="_blank" title="明星三缺一">明星三缺一</a></li>
+                                    <li><a href="/qipai/dazuiqipai" target="_blank" title="大嘴棋牌">大嘴棋牌</a></li>
+                                    <li><a href="/qipai/bashiyouxi" target="_blank" title="巴适游戏">巴适游戏</a></li>
+                                    <li><a href="/qipai/yikuqipaishijie" target="_blank" title="亿酷棋牌世界">亿酷棋牌世界</a></li>
+                                    <li><a href="/qipai/yuwang" target="_blank" title="娱网">娱网</a></li>
+                                    <li><a href="/qipai/jinyoushijie" target="_blank" title="金游世界">金游世界</a></li>
+                                    <li><a href="/qipai/qinyouqipai" target="_blank" title="亲友棋牌">亲友棋牌</a></li>
+                                    <li><a href="/qipai/shengjingqipai" target="_blank" title="盛京棋牌 ">盛京棋牌 </a></li>
+                                    <li><a href="/qipai/sifangyouxi" target="_blank" title="四方棋牌">四方棋牌</a></li>
+                                    <li><a href="/qipai/lewanyouxi" target="_blank" title="乐玩游戏">乐玩游戏</a></li>
+                                    <li><a href="/qipai/shouyingtianxia" target="_blank" title="手赢天下">手赢天下</a></li>
+                                    <li><a href="/qipai/zhuzhiyouxi" target="_blank" title="筑志游戏">筑志游戏</a></li>
+                                    <li><a href="/qipai/fengleiyouxi" target="_blank" title="风雷游戏">风雷游戏</a></li>
+                                </ul>
+                                <div class="wechat-list">
+                                    <a href="/game/664.html" title="老友茶馆" target="_blank">
+                                        <img class="cover" src="./images/2017070749019474.jpg" alt="老友茶馆">
+                                    </a>
+                                    <a href="/game/546.html" title="同城游十三水" target="_blank">
+                                        <img class="cover" src="./images/2017061768958603.jpg" alt="同城游十三水">
+                                    </a>
+                                    <a href="/game/5066.html" title="情怀南京麻将" target="_blank">
+                                        <img class="cover" src="./images/2017120557517309.jpg" alt="情怀南京麻将">
+                                    </a>
+                                    <a href="/game/102.html" title="唐人苏州麻将" target="_blank">
+                                        <img class="cover" src="./images/2017032151859935.jpg" alt="唐人苏州麻将">
+                                    </a>
+                                    <a href="/game/103.html" title="赢乐棋牌" target="_blank">
+                                        <img class="cover" src="./images/2017032128666296.jpg" alt="赢乐棋牌">
+                                    </a>
+                                    <a href="/game/118.html" title=" 边锋斗地主" target="_blank">
+                                        <img class="cover" src="./images/2017032379227113.jpg" alt=" 边锋斗地主">
+                                    </a>
+                                    <a href="/game/124.html" title="小吆跑得快" target="_blank">
+                                        <img class="cover" src="./images/2019081272932999.jpg" alt="小吆跑得快">
+                                    </a>
+                                    <a href="/game/107.html" title="多乐够级" target="_blank">
+                                        <img class="cover" src="./images/2019090264036425.jpg" alt="多乐够级">
+                                    </a>
+                                    <a href="/game/92.html" title="途游斗地主" target="_blank">
+                                        <img class="cover" src="./images/2019082129545947.jpg" alt="途游斗地主">
+                                    </a>
+                                    <a href="/game/24.html" title="皮皮陕西麻将" target="_blank">
+                                        <img class="cover" src="./images/2017031830055459.jpg" alt="皮皮陕西麻将">
+                                    </a>
+                                    <a href="/game/293.html" title="华淳开心麻将" target="_blank">
+                                        <img class="cover" src="./images/2017051596644600.jpg" alt="华淳开心麻将">
+                                    </a>
+                                    <a href="/game/5068.html" title="得意贵州麻将  " target="_blank">
+                                        <img class="cover" src="./images/2018011551434389.jpg" alt="得意贵州麻将  ">
+                                    </a>
+                                    <a href="/game/37.html" title="JJ单机斗地主" target="_blank">
+                                        <img class="cover" src="./images/2019051553316767.jpg" alt="JJ单机斗地主">
+                                    </a>
+                                    <a href="/game/610.html" title="快乐二人麻将" target="_blank">
+                                        <img class="cover" src="./images/2019112238593302.jpg" alt="快乐二人麻将">
+                                    </a>
+                                    <a href="/game/124.html" title="小吆跑得快" target="_blank">
+                                        <img class="cover" src="./images/2019081272932999.jpg" alt="小吆跑得快">
+                                    </a>
+                                    <a href="/game/107.html" title="多乐够级" target="_blank">
+                                        <img class="cover" src="./images/2019090264036425.jpg" alt="多乐够级">
+                                    </a>
+                                    <a href="/game/13.html" title="波克四人斗地主" target="_blank">
+                                        <img class="cover" src="./images/2017031730317846.jpg" alt="波克四人斗地主">
+                                    </a>
+                                    <a href="/game/232.html" title="多狐湖南棋牌" target="_blank">
+                                        <img class="cover" src="./images/2017042854749598.jpg" alt="多狐湖南棋牌">
+                                    </a>
+                                    <a href="/game/638.html" title="长春麻将" target="_blank">
+                                        <img class="cover" src="./images/2017070512273393.jpg" alt="长春麻将">
+                                    </a>
+                                    <a href="/game/63.html" title="闲来跑胡子" target="_blank">
+                                        <img class="cover" src="./images/2017032161948597.jpg" alt="闲来跑胡子">
+                                    </a>
+                                    <a href="/game/380.html" title="红五三打一" target="_blank">
+                                        <img class="cover" src="./images/2019112983624221.jpg" alt="红五三打一">
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="index-col2">
+                    <div class="swiper-container swiper-container1">
+                        <div class="swiper-wrapper" style="width: 3960px; height: 282px; transform: translate3d(-3300px, 0px, 0px); transition-duration: 0.3s;">
+                            <div class="swiper-slide swiper-slide-duplicate" style="width: 660px; height: 282px;"><a href="/qun/24817.html" title="永盛棋牌招实力总代-输赢70% +无限返佣 双提成" target="_blank"><img src="./images/2019122331242752.jpg" alt="永盛棋牌招实力总代-输赢70% +无限返佣 双提成"></a></div>
+                            <div class="swiper-slide" style="width: 660px; height: 282px;">
+                                <a href="/qun/26151.html" title="冠赢GWIN 棋牌包网" target="_blank">
+                                    <img src="./images/2020021114669962.jpg" alt="冠赢GWIN 棋牌包网">
+                                </a>
+                            </div>
+                            <div class="swiper-slide" style="width: 660px; height: 282px;">
+                                <a href="/qun/25667.html" title="135棋牌招合伙人，团队扶持" target="_blank">
+                                    <img src="./images/2020021757574322.jpg" alt="135棋牌招合伙人，团队扶持">
+                                </a>
+                            </div>
+                            <div class="swiper-slide" style="width: 660px; height: 282px;">
+                                <a href="/qun/20425.html" title=" 盛世集团新作（众赢棋牌）官方直招实力总代" target="_blank"><img src="./images/2020010486665649.jpg" alt=" 盛世集团新作（众赢棋牌）官方直招实力总代"></a>
+                            </div>
+                            <div class="swiper-slide" style="width: 660px; height: 282px;"><a href="/qun/24817.html" title="永盛棋牌招实力总代-输赢70% +无限返佣 双提成" target="_blank"><img src="./images/2019122331242752.jpg" alt="永盛棋牌招实力总代-输赢70% +无限返佣 双提成"></a></div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-visible swiper-slide-active" style="width: 660px; height: 282px;"><a href="/qun/26151.html" title="冠赢GWIN 棋牌包网" target="_blank"><img src="./images/2020021114669962.jpg" alt="冠赢GWIN 棋牌包网"></a></div>
+                        </div>
+                        <div class="swiper-pagination"><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <div class="ad-box">
+                        <a href="/qun/24299.html" title="无他  此间棋牌免费招总代" target="_blank"><img src="./images/2019110863759483.jpg" alt="无他  此间棋牌免费招总代"></a>
+                        <a href="/qun/20427.html" title="官方直招实力总代，大力扶持" target="_blank"><img src="./images/2020010465925353.jpg" alt="官方直招实力总代，大力扶持"></a>
+                    </div>
+                </div>
+                <div class="index-col3">
+                    <div class="user-info">
+                        <i class="icon icon-users"></i>
+                        <div class="info-top">
+                            <a href="/passport/login">登录</a> | <a href="/passport/register">注册</a>
+                        </div>
+                        <a href="https://i.qipaiqun.com/publish/group" class="fb"><i class="icon icon-edit"></i>发布</a>
+                    </div>
+                    <!--未登录-->
+                    <div class="ssfabu">
+                        <p>最新棋牌游戏代理信息</p>
+                        <div class="scroll-list">
+                            <ul style="margin-top: -17px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <li>
+                                    <p class="ellipsis">***: 发布【文章】那些年遍布杭州大街小...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌群】四川熊猫麻将交流群，...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">ad***in: 发布【棋牌群】长沙跑得快棋牌交流群...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌群】跑得快群火热招募，全...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">ad***in: 发布【棋牌群】谁有癞子斗地主微信群...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌代理】麻将代理推广渠道_高...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌代理】同城游红十大力招募推...</p>
+                                    <span>3小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">ad***in: 发布【棋牌代理】嘎巴锅棋牌游戏代理，...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌群】潮汕汕头麻将听牌高手...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌群】山东保皇105记牌器...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌群】宁国同城游戏推广微信...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌群】 jj比赛代理推广微...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">ad***in: 发布【棋牌群】手机棋牌游戏平台推广...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">ad***in: 发布【棋牌代理】黄石五十K棋牌玩法介...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【棋牌代理】宁夏滑水麻将钉钉群，...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【文章】闲来宁夏滑水麻将怎么...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">可卿***可卿: 发布【文章】黄石五十k游戏大厅技...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【文章】巴适游戏棋牌平台代理...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【文章】闲来宁夏滑水麻将技巧...</p>
+                                    <span>2小时前</span>
+                                </li>
+                                <li>
+                                    <p class="ellipsis">***: 发布【文章】三扣一规则技巧教学，...</p>
+                                    <span>3小时前</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb40">
+                <div class="item-title">
+                    <div class="item1 title-l"><i class="icon icon-xin"></i>今日推荐<em>HOT</em></div>
+                    <div class="title-r">
+                        <ul class="rec-ul">
+                            <li class="cur"><a href="javascript:;">1</a></li>
+                            <li><a href="javascript:;">2</a></li>
+                            <li><a href="javascript:;">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="today-rec">
+                    <ul style="display: block;">
+                        <li>
+                            <div class="img">
+                                <a href="/qun/25400.html" target="_blank" title="金达棋牌直招总代里！ 税收返水模式！">
+                                    <img src="./images/2020022626440105.jpg" alt="金达棋牌直招总代里！ 税收返水模式！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/25400.html" target="_blank" title="金达棋牌直招总代里！ 税收返水模式！">金达棋牌直招总代里！ 税收返水模式！</a></p>
+                                <div class="bottom">
+                                    <span class="area">澳门 澳门</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>36478</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/15893.html" target="_blank" title="知否  此间招代里">
+                                    <img src="./images/2018062115606402.jpg" alt="知否  此间招代里">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/15893.html" target="_blank" title="知否  此间招代里">知否  此间招代里</a></p>
+                                <div class="bottom">
+                                    <span class="area">湖北 武汉</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>137357</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26092.html" target="_blank" title="九牛棋牌  0投资 注册分享下载就是总代">
+                                    <img src="./images/2020012729363090.jpg" alt="九牛棋牌  0投资 注册分享下载就是总代">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/26092.html" target="_blank" title="九牛棋牌  0投资 注册分享下载就是总代">九牛棋牌  0投资 注册分享下载就是总代</a></p>
+                                <div class="bottom">
+                                    <span class="area">黑龙江 鸡西</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>26989</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/25994.html" target="_blank" title="广告招商，需要投放广告请联系哦！！！！">
+                                    <img src="./images/2020021562602414.jpg" alt="广告招商，需要投放广告请联系哦！！！！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/25994.html" target="_blank" title="广告招商，需要投放广告请联系哦！！！！">广告招商，需要投放广告请联系哦！！！！</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>68724</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26417.html" target="_blank" title="金戊娱乐官方直招">
+                                    <img src="./images/2020021573552727.jpg" alt="金戊娱乐官方直招">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/26417.html" target="_blank" title="金戊娱乐官方直招">金戊娱乐官方直招</a></p>
+                                <div class="bottom">
+                                    <span class="area">黑龙江 齐齐哈尔</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>7172</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26165.html" target="_blank" title="大神厂商直代">
+                                    <img src="./images/2020020595901641.jpg" alt="大神厂商直代">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/26165.html" target="_blank" title="大神厂商直代">大神厂商直代</a></p>
+                                <div class="bottom">
+                                    <span class="area">湖北 武汉</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>11171</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26484.html" target="_blank" title="AG-6up直营招代理，拥金比例55%">
+                                    <img src="./images/2020021727499329.jpg" alt="AG-6up直营招代理，拥金比例55%">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/26484.html" target="_blank" title="AG-6up直营招代理，拥金比例55%">AG-6up直营招代理，拥金比例55%</a></p>
+                                <div class="bottom">
+                                    <span class="area">澳门 澳门</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>13053</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26511.html" target="_blank" title="至尊棋牌全新模式直招总代">
+                                    <img src="./images/2020021842218901.jpg" alt="至尊棋牌全新模式直招总代">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/26511.html" target="_blank" title="至尊棋牌全新模式直招总代">至尊棋牌全新模式直招总代</a></p>
+                                <div class="bottom">
+                                    <span class="area">香港 香港</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>9583</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26812.html" target="_blank" title="明星代言的棋牌 您还在等什么 赶紧下载吧！">
+                                    <img src="./images/2020022623573936.jpg" alt="明星代言的棋牌 您还在等什么 赶紧下载吧！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/26812.html" target="_blank" title="明星代言的棋牌 您还在等什么 赶紧下载吧！">明星代言的棋牌 您还在等什么 赶紧下载吧！</a></p>
+                                <div class="bottom">
+                                    <span class="area">福建 宁德</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>1038</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18139.html" target="_blank" title="95点 招全国代理 无限裂变 客损+税收双收模式">
+                                    <img src="./images/29.png" alt="95点 招全国代理 无限裂变 客损+税收双收模式">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/18139.html" target="_blank" title="95点 招全国代理 无限裂变 客损+税收双收模式">95点 招全国代理 无限裂变 客损+税收双收模式</a></p>
+                                <div class="bottom">
+                                    <span class="area">澳门 澳门</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>9319</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18072.html" target="_blank" title="棋牌游戏市场推广_解读最新的推广方案！">
+                                    <img src="./images/2020021796192249.jpg" alt="棋牌游戏市场推广_解读最新的推广方案！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/18072.html" target="_blank" title="棋牌游戏市场推广_解读最新的推广方案！">棋牌游戏市场推广_解读最新的推广方案！</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>7191</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/12206.html" target="_blank" title="火狐娱乐2020实力综合大盘">
+                                    <img src="./images/2020021890555341.jpg" alt="火狐娱乐2020实力综合大盘">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/12206.html" target="_blank" title="火狐娱乐2020实力综合大盘">火狐娱乐2020实力综合大盘</a></p>
+                                <div class="bottom">
+                                    <span class="area">广东 珠海</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>15332</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/17251.html" target="_blank" title="至尊棋牌招在做代理">
+                                    <img src="./images/153.png" alt="至尊棋牌招在做代理">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/17251.html" target="_blank" title="至尊棋牌招在做代理">至尊棋牌招在做代理</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>124161</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/17278.html" target="_blank" title="钻石棋牌圈招代理中">
+                                    <img src="./images/180.png" alt="钻石棋牌圈招代理中">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/17278.html" target="_blank" title="钻石棋牌圈招代理中">钻石棋牌圈招代理中</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>101716</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/18077.html" target="_blank" title="盛世棋牌，火爆平台零费用招代理！">
+                                    <img src="./images/2018110933243986.jpg" alt="盛世棋牌，火爆平台零费用招代理！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/18077.html" target="_blank" title="盛世棋牌，火爆平台零费用招代理！">盛世棋牌，火爆平台零费用招代理！</a></p>
+                                <div class="bottom">
+                                    <span class="area">澳门 澳门</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>95544</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/17119.html" target="_blank" title="好平台棋牌游戏代理招募中！">
+                                    <img src="./images/2018073137221913.jpg" alt="好平台棋牌游戏代理招募中！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/17119.html" target="_blank" title="好平台棋牌游戏代理招募中！">好平台棋牌游戏代理招募中！</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>93288</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/19650.html" target="_blank" title="【棋棋俱乐部】招总代，最高待遇+扶持活动">
+                                    <img src="./images/2020010398025300.jpg" alt="【棋棋俱乐部】招总代，最高待遇+扶持活动">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/19650.html" target="_blank" title="【棋棋俱乐部】招总代，最高待遇+扶持活动">【棋棋俱乐部】招总代，最高待遇+扶持活动</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>66358</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/25599.html" target="_blank" title="我用双手成就您的梦想，诚邀合伙人">
+                                    <img src="./images/2019122872119619.jpg" alt="我用双手成就您的梦想，诚邀合伙人">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/25599.html" target="_blank" title="我用双手成就您的梦想，诚邀合伙人">我用双手成就您的梦想，诚邀合伙人</a></p>
+                                <div class="bottom">
+                                    <span class="area">天津 天津</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>38608</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/21182.html" target="_blank" title="168棋牌天天百万大奖派送，下载APP免费领取">
+                                    <img src="./images/2019062655065504.jpg" alt="168棋牌天天百万大奖派送，下载APP免费领取">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/21182.html" target="_blank" title="168棋牌天天百万大奖派送，下载APP免费领取">168棋牌天天百万大奖派送，下载APP免费领取</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>37863</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/25667.html" target="_blank" title="135棋牌招合伙人，团队扶持">
+                                    <img src="./images/2020021760782316.jpg" alt="135棋牌招合伙人，团队扶持">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/25667.html" target="_blank" title="135棋牌招合伙人，团队扶持">135棋牌招合伙人，团队扶持</a></p>
+                                <div class="bottom">
+                                    <span class="area">四川 成都</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>37543</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/24299.html" target="_blank" title="无他  此间棋牌免费招总代">
+                                    <img src="./images/2019110872048487.jpg" alt="无他  此间棋牌免费招总代">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/qun/24299.html" target="_blank" title="无他  此间棋牌免费招总代">无他  此间棋牌免费招总代</a></p>
+                                <div class="bottom">
+                                    <span class="area">甘肃 定西</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>36198</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/9889.html" target="_blank" title="大菠萝棋牌游戏，招实力代理">
+                                    <img src="./images/72.png" alt="大菠萝棋牌游戏，招实力代理">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/9889.html" target="_blank" title="大菠萝棋牌游戏，招实力代理">大菠萝棋牌游戏，招实力代理</a></p>
+                                <div class="bottom">
+                                    <span class="area">江苏 南京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>562593</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/9997.html" target="_blank" title="【大菠萝棋牌娱乐】诚招全国代理">
+                                    <img src="./images/2018092590314230.jpg" alt="【大菠萝棋牌娱乐】诚招全国代理">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/9997.html" target="_blank" title="【大菠萝棋牌娱乐】诚招全国代理">【大菠萝棋牌娱乐】诚招全国代理</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>193583</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/17094.html" target="_blank" title="富家棋牌诚招代理">
+                                    <img src="./images/2019120254545004.jpg" alt="富家棋牌诚招代理">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/17094.html" target="_blank" title="富家棋牌诚招代理">富家棋牌诚招代理</a></p>
+                                <div class="bottom">
+                                    <span class="area">北京 北京</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>173561</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/9172.html" target="_blank" title="天宫棋牌诚招总代！！">
+                                    <img src="./images/2018081640666695.jpg" alt="天宫棋牌诚招总代！！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/9172.html" target="_blank" title="天宫棋牌诚招总代！！">天宫棋牌诚招总代！！</a></p>
+                                <div class="bottom">
+                                    <span class="area">澳门 澳门</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>100401</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/10629.html" target="_blank" title="聚友棋牌70％招代理！">
+                                    <img src="./images/2018120376366416.jpg" alt="聚友棋牌70％招代理！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/10629.html" target="_blank" title="聚友棋牌70％招代理！">聚友棋牌70％招代理！</a></p>
+                                <div class="bottom">
+                                    <span class="area">广东 广州</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>96840</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/11588.html" target="_blank" title="花开富贵棋牌,诚招加盟！">
+                                    <img src="./images/23.png" alt="花开富贵棋牌,诚招加盟！">
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p class="ellipsis"><a href="/zhaoshang/11588.html" target="_blank" title="花开富贵棋牌,诚招加盟！">花开富贵棋牌,诚招加盟！</a></p>
+                                <div class="bottom">
+                                    <span class="area">黑龙江 哈尔滨</span>
+                                    <span class="collection"><i class="icon icon-eye"></i>87207</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="index_ad69">
+                <a href="/qun/24688.html" title="雄鹰棋盟直招代理，全方位扶持" target="_blank"><img src="./images/2020020695482807.jpg"></a>
+            </div>
+            <div id="row-item1" class="row row-item pb40">
+                <div class="item-title">
+                    <div class="item2 title-l"><i class="icon icon-mei"></i>棋牌游戏群<em>GROUP</em></div>
+                    <div class="new-hot"><a href="javascript:;" class="cur">最热</a><a href="javascript:;">最新</a></div>
+                    <div class="title-r">
+                        <a href="/qun" class="more">更多<i class="icon icon-arr-right"></i></a>
+                    </div>
+                </div>
+                <div class="list">
+                    <ul class="vertical-list">
+                        <li>
+                            <a href="/qun/23007.html" target="_blank" class="item-link" title="天下第一棋牌-官方直招代理">
+                                <img class="img-cover" src="./images/2019090474931319.jpg" alt="天下第一棋牌-官方直招代理">
+                                <img class="img-wechat" src="./images/2019090475701154.jpg" alt="天下第一棋牌-官方直招代理二维码">
+                                <p class="title ellipsis">天下第一棋牌-官方直招代理</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>10723</span>
+                                <span class="area">江苏 南京</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26484.html" target="_blank" class="item-link" title="AG-6up直营招代理，拥金比例55%">
+                                <img class="img-cover" src="./images/2020021727499329.jpg" alt="AG-6up直营招代理，拥金比例55%">
+                                <img class="img-wechat" src="./images/2020021745667046.jpg" alt="AG-6up直营招代理，拥金比例55%二维码">
+                                <p class="title ellipsis">AG-6up直营招代理，拥金比例55%</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>13053</span>
+                                <span class="area">澳门 澳门</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26599.html" target="_blank" class="item-link" title="自娱代理两相宜！传奇棋牌-创造经典 无限革新">
+                                <img class="img-cover" src="./images/2020022062815217.jpg" alt="自娱代理两相宜！传奇棋牌-创造经典 无限革新">
+                                <img class="img-wechat" src="./images/2020022079044813.jpg" alt="自娱代理两相宜！传奇棋牌-创造经典 无限革新二维码">
+                                <p class="title ellipsis">自娱代理两相宜！传奇棋牌-创造经典 无限革新</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>60337</span>
+                                <span class="area">湖北 武汉</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26204.html" target="_blank" class="item-link" title="澳门棋牌   官方直招代理">
+                                <img class="img-cover" src="./images/2020020774147741.jpg" alt="澳门棋牌   官方直招代理">
+                                <img class="img-wechat" src="./images/2020020761113190.jpg" alt="澳门棋牌   官方直招代理二维码">
+                                <p class="title ellipsis">澳门棋牌   官方直招代理</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>9448</span>
+                                <span class="area">江苏 苏州</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26480.html" target="_blank" class="item-link" title="AG-6up直营招代理，拥金最高比例55%">
+                                <img class="img-cover" src="./images/2020021781986509.jpg" alt="AG-6up直营招代理，拥金最高比例55%">
+                                <img class="img-wechat" src="./images/2020021789335129.jpg" alt="AG-6up直营招代理，拥金最高比例55%二维码">
+                                <p class="title ellipsis">AG-6up直营招代理，拥金最高比例55%</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>10307</span>
+                                <span class="area">澳门 澳门</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/25994.html" target="_blank" class="item-link" title="广告招商，需要投放广告请联系哦！！！！">
+                                <img class="img-cover" src="./images/2020021562602414.jpg" alt="广告招商，需要投放广告请联系哦！！！！">
+                                <img class="img-wechat" src="./images/2020021574553872.jpg" alt="广告招商，需要投放广告请联系哦！！！！二维码">
+                                <p class="title ellipsis">广告招商，需要投放广告请联系哦！！！！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>68724</span>
+                                <span class="area">北京 北京</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26703.html" target="_blank" class="item-link" title="微信棋牌娱乐群，免费进群，免费">
+                                <img class="img-cover" src="./images/2020022360912865.jpg" alt="微信棋牌娱乐群，免费进群，免费">
+                                <img class="img-wechat" src="./images/2020022359382650.jpg" alt="微信棋牌娱乐群，免费进群，免费二维码">
+                                <p class="title ellipsis">微信棋牌娱乐群，免费进群，免费</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>702</span>
+                                <span class="area">北京 北京</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26701.html" target="_blank" class="item-link" title="银牛娱乐找玩家招代理">
+                                <img class="img-cover" src="./images/2020022338278680.jpg" alt="银牛娱乐找玩家招代理">
+                                <img class="img-wechat" src="./images/2020022391804474.jpg" alt="银牛娱乐找玩家招代理二维码">
+                                <p class="title ellipsis">银牛娱乐找玩家招代理</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>726</span>
+                                <span class="area">北京 北京</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26699.html" target="_blank" class="item-link" title="棋牌怎么做代理">
+                                <img class="img-cover" src="./images/7.png" alt="棋牌怎么做代理">
+                                <img class="img-wechat" src="./images/2020022384376120.jpg" alt="棋牌怎么做代理二维码">
+                                <p class="title ellipsis">棋牌怎么做代理</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>708</span>
+                                <span class="area">湖南 长沙</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26697.html" target="_blank" class="item-link" title="牌友联盟官方客服,牌友联盟ios官网下载">
+                                <img class="img-cover" src="./images/60.png" alt="牌友联盟官方客服,牌友联盟ios官网下载">
+                                <img class="img-wechat" src="./images/2020022332953320.jpg" alt="牌友联盟官方客服,牌友联盟ios官网下载二维码">
+                                <p class="title ellipsis">牌友联盟官方客服,牌友联盟ios官网下载</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-eye"></i>746</span>
+                                <span class="area">甘肃 定西</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="vertical-list" style="display: none;">
+                        <li>
+                            <a href="/qun/26816.html" target="_blank" class="item-link" title="[世界棋牌]，首充100送100，进来玩就送">
+                                <img class="img-cover" src="./images/2020022755448998.jpg" alt="[世界棋牌]，首充100送100，进来玩就送">
+                                <img class="img-wechat" src="./images/2020022755910563.jpg" alt="[世界棋牌]，首充100送100，进来玩就送二维码">
+                                <p class="title ellipsis">[世界棋牌]，首充100送100，进来玩就送</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                <span class="area">湖北 武汉</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26841.html" target="_blank" class="item-link" title="潮汕汕头麻将听牌高手钉钉群！">
+                                <img class="img-cover" src="./images/2020022742707747.jpg" alt="潮汕汕头麻将听牌高手钉钉群！">
+                                <img class="img-wechat" src="./images/2020022776654744.jpg" alt="潮汕汕头麻将听牌高手钉钉群！二维码">
+                                <p class="title ellipsis">潮汕汕头麻将听牌高手钉钉群！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                <span class="area">重庆 重庆</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26840.html" target="_blank" class="item-link" title="山东保皇105记牌器推广钉钉群！">
+                                <img class="img-cover" src="./images/2020022796981561.jpg" alt="山东保皇105记牌器推广钉钉群！">
+                                <img class="img-wechat" src="./images/2020022718580652.jpg" alt="山东保皇105记牌器推广钉钉群！二维码">
+                                <p class="title ellipsis">山东保皇105记牌器推广钉钉群！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                <span class="area">上海 上海</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26839.html" target="_blank" class="item-link" title="宁国同城游戏推广微信群，一起玩宁国三叉子！">
+                                <img class="img-cover" src="./images/2020022729849987.jpg" alt="宁国同城游戏推广微信群，一起玩宁国三叉子！">
+                                <img class="img-wechat" src="./images/2020022760282243.jpg" alt="宁国同城游戏推广微信群，一起玩宁国三叉子！二维码">
+                                <p class="title ellipsis">宁国同城游戏推广微信群，一起玩宁国三叉子！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                <span class="area">陕西 西安</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26838.html" target="_blank" class="item-link" title=" jj比赛代理推广微信群，诚招湖南跑得快代理">
+                                <img class="img-cover" src="./images/2020022729298027.jpg" alt=" jj比赛代理推广微信群，诚招湖南跑得快代理">
+                                <img class="img-wechat" src="./images/2020022725036021.jpg" alt=" jj比赛代理推广微信群，诚招湖南跑得快代理二维码">
+                                <p class="title ellipsis"> jj比赛代理推广微信群，诚招湖南跑得快代理</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                <span class="area">湖南 长沙</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26837.html" target="_blank" class="item-link" title="手机棋牌游戏平台推广微信群，分享微信棋牌群号大全">
+                                <img class="img-cover" src="./images/2020022790430989.jpg" alt="手机棋牌游戏平台推广微信群，分享微信棋牌群号大全">
+                                <img class="img-wechat" src="./images/2020022760750258.jpg" alt="手机棋牌游戏平台推广微信群，分享微信棋牌群号大全二维码">
+                                <p class="title ellipsis">手机棋牌游戏平台推广微信群，分享微信棋牌群号大全</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                <span class="area">辽宁 沈阳</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26834.html" target="_blank" class="item-link" title="谁有癞子斗地主微信群？拉我进去，在家憋疯了！">
+                                <img class="img-cover" src="./images/2020022714888123.jpg" alt="谁有癞子斗地主微信群？拉我进去，在家憋疯了！">
+                                <img class="img-wechat" src="./images/2020022790375664.jpg" alt="谁有癞子斗地主微信群？拉我进去，在家憋疯了！二维码">
+                                <p class="title ellipsis">谁有癞子斗地主微信群？拉我进去，在家憋疯了！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                <span class="area">北京 北京</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26832.html" target="_blank" class="item-link" title="四川熊猫麻将交流群，想玩麻将的看这里！">
+                                <img class="img-cover" src="./images/2020022728410059.jpg" alt="四川熊猫麻将交流群，想玩麻将的看这里！">
+                                <img class="img-wechat" src="./images/2020022733549815.jpg" alt="四川熊猫麻将交流群，想玩麻将的看这里！二维码">
+                                <p class="title ellipsis">四川熊猫麻将交流群，想玩麻将的看这里！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                <span class="area">四川 成都</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26831.html" target="_blank" class="item-link" title="跑得快群火热招募，全天免费开放！">
+                                <img class="img-cover" src="./images/2020022793967556.jpg" alt="跑得快群火热招募，全天免费开放！">
+                                <img class="img-wechat" src="./images/2020022775041987.jpg" alt="跑得快群火热招募，全天免费开放！二维码">
+                                <p class="title ellipsis">跑得快群火热招募，全天免费开放！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                <span class="area">湖南 益阳</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/qun/26830.html" target="_blank" class="item-link" title="长沙跑得快棋牌交流群，进群就能立即参与游戏！">
+                                <img class="img-cover" src="./images/2020022761004778.jpg" alt="长沙跑得快棋牌交流群，进群就能立即参与游戏！">
+                                <img class="img-wechat" src="./images/2020022768904439.jpg" alt="长沙跑得快棋牌交流群，进群就能立即参与游戏！二维码">
+                                <p class="title ellipsis">长沙跑得快棋牌交流群，进群就能立即参与游戏！</p>
+                            </a>
+                            <div class="other">
+                                <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                <span class="area">湖南 益阳</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="index_ad70">
+                <a href="/qun/26229.html" title="如意棋牌直招总代" target="_blank"><img src="./images/2020020872700385.jpg"></a>
+            </div>
+            <div id="row-item2" class="row row-item pb40">
+                <div class="item-title">
+                    <div class="item3 title-l"><i class="icon icon-fang"></i>棋牌游戏代理<em>PROXY</em></div>
+                    <div class="new-hot"><a href="javascript:;" class="cur">最热</a><a href="javascript:;">最新</a></div>
+                    <div class="title-r">
+                        <!--ul class="item-ul">
+                                                <li><a href="/zhaoshang/bdailizm" target="_blank">代理招募</a></li>
+                                                <li><a href="/zhaoshang/bwanjiazm" target="_blank">个人代理</a></li>
+                                                <li><a href="/zhaoshang/bpaiyouhf" target="_blank">牌友互粉</a></li>
+                                                <li><a href="/zhaoshang/bdailijm" target="_blank">代理加盟</a></li>
+                                                <li><a href="/zhaoshang/bmajiangji" target="_blank">麻将机</a></li>
+                                            </ul-->
+                        <a href="/zhaoshang" class="more" target="_blank">更多<i class="icon icon-arr-right"></i></a>
+                    </div>
+                </div>
+                <div class="list">
+                    <ul class="horizontal-list">
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26252.html" target="_blank" title="星际首码大金山">
+                                    <img class="img-cover" src="./images/2020022276098862.jpg" alt="星际首码大金山">
+                                    <img class="img-wechat" src="./images/2020022247997043.jpg" alt="星际首码大金山二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/qun/26252.html" target="_blank" title="星际首码大金山" class="item-link">
+                                    <p class="title ellipsis">星际首码大金山</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>10141</span>
+                                    <span class="area">甘肃 兰州</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/qun/26484.html" target="_blank" title="AG-6up直营招代理，拥金比例55%">
+                                    <img class="img-cover" src="./images/2020021727499329.jpg" alt="AG-6up直营招代理，拥金比例55%">
+                                    <img class="img-wechat" src="./images/2020021745667046.jpg" alt="AG-6up直营招代理，拥金比例55%二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/qun/26484.html" target="_blank" title="AG-6up直营招代理，拥金比例55%" class="item-link">
+                                    <p class="title ellipsis">AG-6up直营招代理，拥金比例55%</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>13053</span>
+                                    <span class="area">澳门 澳门</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/1276.html" target="_blank" title="亲友娄底棋牌招代理">
+                                    <img class="img-cover" src="./images/2017060818714325.jpg" alt="亲友娄底棋牌招代理">
+                                    <img class="img-wechat" src="./images/2017060867426890.jpg" alt="亲友娄底棋牌招代理二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/1276.html" target="_blank" title="亲友娄底棋牌招代理" class="item-link">
+                                    <p class="title ellipsis">亲友娄底棋牌招代理</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>27352</span>
+                                    <span class="area">湖南 娄底</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/12622.html" target="_blank" title="芒果娱乐 税收 加客损分红">
+                                    <img class="img-cover" src="./images/26.png" alt="芒果娱乐 税收 加客损分红">
+                                    <img class="img-wechat" src="./images/2019041157333607.jpg" alt="芒果娱乐 税收 加客损分红二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/12622.html" target="_blank" title="芒果娱乐 税收 加客损分红" class="item-link">
+                                    <p class="title ellipsis">芒果娱乐 税收 加客损分红</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>522</span>
+                                    <span class="area">安徽 合肥</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/16540.html" target="_blank" title="官方诚.招.实.力.代.理">
+                                    <img class="img-cover" src="./images/16.png" alt="官方诚.招.实.力.代.理">
+                                    <img class="img-wechat" src="./images/2019111149519882.jpg" alt="官方诚.招.实.力.代.理二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/16540.html" target="_blank" title="官方诚.招.实.力.代.理" class="item-link">
+                                    <p class="title ellipsis">官方诚.招.实.力.代.理</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>3</span>
+                                    <span class="area">广东 江门</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/13396.html" target="_blank" title="三年老品牌-负盈利+税收提成 诚招长期合作代理">
+                                    <img class="img-cover" src="./images/2019061764484932.jpg" alt="三年老品牌-负盈利+税收提成 诚招长期合作代理">
+                                    <img class="img-wechat" src="./images/2019061769991349.jpg" alt="三年老品牌-负盈利+税收提成 诚招长期合作代理二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/13396.html" target="_blank" title="三年老品牌-负盈利+税收提成 诚招长期合作代理" class="item-link">
+                                    <p class="title ellipsis">三年老品牌-负盈利+税收提成 诚招长期合作代理</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>57</span>
+                                    <span class="area">澳门 澳门</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18334.html" target="_blank" title="凯旋归来 带你回本">
+                                    <img class="img-cover" src="./images/29.png" alt="凯旋归来 带你回本">
+                                    <img class="img-wechat" src="./images/2020021643490679.jpg" alt="凯旋归来 带你回本二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18334.html" target="_blank" title="凯旋归来 带你回本" class="item-link">
+                                    <p class="title ellipsis">凯旋归来 带你回本</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>712</span>
+                                    <span class="area">广东 广州</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/1862.html" target="_blank" title="网跃麻将招募蚌埠市营运代理商">
+                                    <img class="img-cover" src="./images/13.png" alt="网跃麻将招募蚌埠市营运代理商">
+                                    <img class="img-wechat" src="./images/2017081778471086.jpg" alt="网跃麻将招募蚌埠市营运代理商二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/1862.html" target="_blank" title="网跃麻将招募蚌埠市营运代理商" class="item-link">
+                                    <p class="title ellipsis">网跃麻将招募蚌埠市营运代理商</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>26707</span>
+                                    <span class="area">安徽 蚌埠</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/17644.html" target="_blank" title="闲牛2阿里棋牌官方大招募50%">
+                                    <img class="img-cover" src="./images/2019122285329232.jpg" alt="闲牛2阿里棋牌官方大招募50%">
+                                    <img class="img-wechat" src="./images/2019122239780253.jpg" alt="闲牛2阿里棋牌官方大招募50%二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/17644.html" target="_blank" title="闲牛2阿里棋牌官方大招募50%" class="item-link">
+                                    <p class="title ellipsis">闲牛2阿里棋牌官方大招募50%</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-eye"></i>4</span>
+                                    <span class="area">澳门 澳门</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="horizontal-list" style="display: none;">
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18537.html" target="_blank" title="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！">
+                                    <img class="img-cover" src="./images/2020022726384674.jpg" alt="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！">
+                                    <img class="img-wechat" src="./images/2020022792054192.jpg" alt="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18537.html" target="_blank" title="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！" class="item-link">
+                                    <p class="title ellipsis">宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                    <span class="area">广东 广州</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18536.html" target="_blank" title="黄石五十K棋牌玩法介绍攻略，想要的加我">
+                                    <img class="img-cover" src="./images/2020022725599672.jpg" alt="黄石五十K棋牌玩法介绍攻略，想要的加我">
+                                    <img class="img-wechat" src="./images/2020022710969097.jpg" alt="黄石五十K棋牌玩法介绍攻略，想要的加我二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18536.html" target="_blank" title="黄石五十K棋牌玩法介绍攻略，想要的加我" class="item-link">
+                                    <p class="title ellipsis">黄石五十K棋牌玩法介绍攻略，想要的加我</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                    <span class="area">重庆 重庆</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18534.html" target="_blank" title="嘎巴锅棋牌游戏代理，棋牌专业问答！">
+                                    <img class="img-cover" src="./images/2020022782147276.jpg" alt="嘎巴锅棋牌游戏代理，棋牌专业问答！">
+                                    <img class="img-wechat" src="./images/2020022738341992.jpg" alt="嘎巴锅棋牌游戏代理，棋牌专业问答！二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18534.html" target="_blank" title="嘎巴锅棋牌游戏代理，棋牌专业问答！" class="item-link">
+                                    <p class="title ellipsis">嘎巴锅棋牌游戏代理，棋牌专业问答！</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>2小时前 </span>
+                                    <span class="area">广东 广州</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18533.html" target="_blank" title="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！">
+                                    <img class="img-cover" src="./images/2020022799791783.jpg" alt="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！">
+                                    <img class="img-wechat" src="./images/2020022736113433.jpg" alt="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18533.html" target="_blank" title="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！" class="item-link">
+                                    <p class="title ellipsis">白金岛跑得快代理推广秘籍，你的安全感全都来自这里！</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                    <span class="area">北京 北京</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18532.html" target="_blank" title="麻将代理推广渠道_高效优化看这里！">
+                                    <img class="img-cover" src="./images/2020022757740739.jpg" alt="麻将代理推广渠道_高效优化看这里！">
+                                    <img class="img-wechat" src="./images/2020022714628684.jpg" alt="麻将代理推广渠道_高效优化看这里！二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18532.html" target="_blank" title="麻将代理推广渠道_高效优化看这里！" class="item-link">
+                                    <p class="title ellipsis">麻将代理推广渠道_高效优化看这里！</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                    <span class="area">北京 北京</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18531.html" target="_blank" title="同城游红十大力招募推广代理群主，免费培训包上岗！">
+                                    <img class="img-cover" src="./images/2020022765100758.jpg" alt="同城游红十大力招募推广代理群主，免费培训包上岗！">
+                                    <img class="img-wechat" src="./images/2020022720482250.jpg" alt="同城游红十大力招募推广代理群主，免费培训包上岗！二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18531.html" target="_blank" title="同城游红十大力招募推广代理群主，免费培训包上岗！" class="item-link">
+                                    <p class="title ellipsis">同城游红十大力招募推广代理群主，免费培训包上岗！</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                    <span class="area">北京 北京</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18530.html" target="_blank" title="熊猫麻将招线上推广代理，够胆你就来！">
+                                    <img class="img-cover" src="./images/2020022711843458.jpg" alt="熊猫麻将招线上推广代理，够胆你就来！">
+                                    <img class="img-wechat" src="./images/2020022726536337.jpg" alt="熊猫麻将招线上推广代理，够胆你就来！二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18530.html" target="_blank" title="熊猫麻将招线上推广代理，够胆你就来！" class="item-link">
+                                    <p class="title ellipsis">熊猫麻将招线上推广代理，够胆你就来！</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>3小时前 </span>
+                                    <span class="area">北京 北京</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18529.html" target="_blank" title="技术量和媒体量推广qp">
+                                    <img class="img-cover" src="./images/29.png" alt="技术量和媒体量推广qp">
+                                    <img class="img-wechat" src="./images/2020022765116055.jpg" alt="技术量和媒体量推广qp二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18529.html" target="_blank" title="技术量和媒体量推广qp" class="item-link">
+                                    <p class="title ellipsis">技术量和媒体量推广qp</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>8小时前 </span>
+                                    <span class="area">福建 厦门</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img">
+                                <a href="/zhaoshang/18528.html" target="_blank" title="老友麻将代理推广_代理加盟新手必做渠道分享">
+                                    <img class="img-cover" src="./images/2020022768802900.jpg" alt="老友麻将代理推广_代理加盟新手必做渠道分享">
+                                    <img class="img-wechat" src="./images/2020022737845039.jpg" alt="老友麻将代理推广_代理加盟新手必做渠道分享二维码">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="/zhaoshang/18528.html" target="_blank" title="老友麻将代理推广_代理加盟新手必做渠道分享" class="item-link">
+                                    <p class="title ellipsis">老友麻将代理推广_代理加盟新手必做渠道分享</p>
+                                </a>
+                                <div class="other">
+                                    <span class="guanzhu"><i class="icon icon-times"></i>9小时前 </span>
+                                    <span class="area">广东 广州</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="index_ad84">
+            </div>
+            <div id="row-item3" class="row row-item pb40">
+                <div class="item-title">
+                    <div class="item2 title-l"><i class="icon icon-mei"></i>棋牌问答<em>QUESTION</em></div>
+
+                    <div class="title-r">
+                        <ul class="item-ul">
+                            <li><a href="/tag/1qipaiyouxi" class="tag" target="_blank">棋牌游戏</a></li>
+                            <li><a href="/tag/1qipaiwangzhan" class="tag" target="_blank">棋牌网站</a></li>
+                        </ul>
+                        <a href="/wenda" class="more">更多<i class="icon icon-arr-right"></i></a>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="row row-item pb40">
+                        <div class="cols">
+                            <div class="bottom">
+                                <ul class="news2">
+                                    <li class="hover">
+                                        <a href="/wenda/1918.html" title="最近在陪女儿玩天天军棋小游戏，希望大家能够教我一些军棋技巧玩法！" target="_blank">
+                                            <p class=""><label class="q">Q</label>最近在陪女儿玩天天军棋小游戏，希望大家能够教我一些军棋技巧玩法！</p>
+                                            <p class=""><label class="a">A</label>天天军棋小游戏中，军棋技巧玩法其实并不难，只是需要玩家不断的实践而已：军棋规则所有的游戏都是有规则存...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/wenda/1917.html" title="空当接龙4399在线玩中，空当接龙技巧有些什么呢？" target="_blank">
+                                            <p class=""><label class="q">Q</label>空当接龙4399在线玩中，空当接龙技巧有些什么呢？</p>
+                                            <p class=""><label class="a">A</label>空当接龙4399在线玩是很适合大众的一款游戏，所以我也总结了非常多的空当接龙技巧，还望能够帮助到你！...</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="b-r">
+                                    <ul class="news3" style="margin-top: 6px;">
+                                        <li>
+                                            <em class="circle2"></em>
+                                            <a href="/wenda/1914.html" title="听说边锋游戏三扣一很好玩？求分享一下规则给我" target="_blank"><p class="ellipsis">听说边锋游戏三扣一很 <span class="right" style="float: right;font-size: 10px;margin-top: 5px;"><img src="./images/shijian.jpg" style="width: 10px;height: 10px;margin-right: 5px;">2020-02-27</span></p></a>
+                                        </li>
+                                        <li>
+                                            <em class="circle2"></em>
+                                            <a href="/wenda/1913.html" title="延边地区有什么好玩的游戏吗？红十怎么玩的？" target="_blank"><p class="ellipsis">延边地区有什么好玩的 <span class="right" style="float: right;font-size: 10px;margin-top: 5px;"><img src="./images/shijian.jpg" style="width: 10px;height: 10px;margin-right: 5px;">2020-02-27</span></p></a>
+                                        </li>
+                                        <li>
+                                            <em class="circle2"></em>
+                                            <a href="/wenda/1911.html" title="玩跳棋游戏有什么技巧吗？分享一下，每次都输啊" target="_blank"><p class="ellipsis">玩跳棋游戏有什么技巧 <span class="right" style="float: right;font-size: 10px;margin-top: 5px;"><img src="./images/shijian.jpg" style="width: 10px;height: 10px;margin-right: 5px;">2020-02-26</span></p></a>
+                                        </li>
+                                        <li>
+                                            <em class="circle2"></em>
+                                            <a href="/wenda/1910.html" title="玩麻将用默往app怎么样？不会被封群吧！" target="_blank"><p class="ellipsis">玩麻将用默往app怎 <span class="right" style="float: right;font-size: 10px;margin-top: 5px;"><img src="./images/shijian.jpg" style="width: 10px;height: 10px;margin-right: 5px;">2020-02-26</span></p></a>
+                                        </li>
+                                        <li>
+                                            <em class="circle2"></em>
+                                            <a href="/wenda/1908.html" title="求分享一些五子棋游戏的技巧，听说还有外挂？是不是真的" target="_blank"><p class="ellipsis">求分享一些五子棋游戏 <span class="right" style="float: right;font-size: 10px;margin-top: 5px;"><img src="./images/shijian.jpg" style="width: 10px;height: 10px;margin-right: 5px;">2020-02-26</span></p></a>
+                                        </li>
+                                        <li>
+                                            <em class="circle2"></em>
+                                            <a href="/wenda/1906.html" title="大同有好玩的游戏吗？攉龙游戏大厅怎么样？" target="_blank"><p class="ellipsis">大同有好玩的游戏吗？ <span class="right" style="float: right;font-size: 10px;margin-top: 5px;"><img src="./images/shijian.jpg" style="width: 10px;height: 10px;margin-right: 5px;">2020-02-26</span></p></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cols">
+                            <div class="bottom">
+                                <ul class="guides" style="margin-top: 15px;">
+                                    <li>
+                                        <label>1</label>
+                                        <a href="/wenda/1915.html" title="同城游红十游戏怎么玩？在线跪求最新的玩法攻略！" target="_blank">同城游红十游戏怎么玩？在线跪求最 <span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                                    </li>
+                                    <li>
+                                        <label>2</label>
+                                        <a href="/wenda/1916.html" title="聊呗聊天软件怎么样？跟微信又有什么区别？" target="_blank">聊呗聊天软件怎么样？跟微信又有什 <span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                                    </li>
+                                    <li>
+                                        <label>3</label>
+                                        <a href="/wenda/1909.html" title="宜兴炒地皮游戏很好玩的样子，有什么炒地皮技巧吗？" target="_blank">宜兴炒地皮游戏很好玩的样子，有什 <span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-26</span></a>
+                                    </li>
+                                    <li>
+                                        <label>4</label>
+                                        <a href="/wenda/1912.html" title="新手癞子斗地主代理如何调整自己的心态？我快要爆炸了！" target="_blank">新手癞子斗地主代理如何调整自己的 <span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-26</span></a>
+                                    </li>
+                                    <li>
+                                        <label>5</label>
+                                        <a href="/wenda/1905.html" title="超级挖坑游戏有哪些秘籍？为什么我总掉入别人的“坑”？" target="_blank">超级挖坑游戏有哪些秘籍？为什么我 <span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-26</span></a>
+                                    </li>
+                                    <li>
+                                        <label>6</label>
+                                        <a href="/wenda/1907.html" title="我是慈溪游戏中心代理，慈溪游戏中心推广方法有哪些？" target="_blank">我是慈溪游戏中心代理，慈溪游戏中 <span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-26</span></a>
+                                    </li>
+                                </ul>
+                                <div class="ad-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="row-item6" class="row row-item pb40">
+                <div class="title-f">
+                    <p><i class="icon icon-hei"></i>                    棋牌游戏代理平台<em>PLATFORM</em></p>
+                    <a href="/qipai" class="more" target="_blank">更多<i class="icon icon-arr-r-white"></i></a>
+                </div>
+                <ul class="platform-list">
+                    <li>
+                        <a href="/qipai/leshanqiaopai" title="乐山桥牌" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020022763561964.jpg" alt="乐山桥牌">
+                                <div class="intro"><p>乐山桥牌棋牌是一款正宗的四川棋牌游戏线上平台，努力打造真正的家乡游戏中心。全新的游戏内容，正宗乐山桥牌玩法、斗地主等玩法，丰富多样的赛事活动，大奖拿不停，贴心的...</p></div>
+                            </div>
+                            <p class="title">乐山桥牌</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/qipai/wuxiyouxizhongxin" title="巫溪游戏中心" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020022752182630.jpg" alt="巫溪游戏中心">
+                                <div class="intro"><p>巫溪游戏中心是一款正宗的重庆巫溪游戏线上平台，努力打造真正的家乡游戏中心。全新的游戏内容，正宗巫溪四副玩法、斗地主等玩法，丰富多样的赛事活动，大奖拿不停，贴心的...</p></div>
+                            </div>
+                            <p class="title">巫溪游戏中心</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/qipai/zhengguiqipaiyouxi" title="正规棋牌游戏" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020022628964737.jpg" alt="正规棋牌游戏">
+                                <div class="intro"><p>正规棋牌游戏是一款可以在线参与的棋牌游戏平台，在这里汇集众多棋牌游戏玩法，并且结合经典的游戏规则，打造了新颖的多人公平竞技体验，玩家在此可尽情享受棋牌游戏带来的...</p></div>
+                            </div>
+                            <p class="title">正规棋牌游戏</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/lehumajiang" title="乐胡麻将" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020022611119952.jpg" alt="乐胡麻将">
+                                <div class="intro"><p>乐胡麻将是一款具有地方特色的棋牌游戏，不仅拥有精美的游戏界面，同时汇集丰富的玩法，节奏明快，瞬间即可让玩家体验到无穷乐趣。操作便捷，全屏无障碍滑动，与家人朋友实...</p></div>
+                            </div>
+                            <p class="title">乐胡麻将</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/dajiangjunqimeng" title="大将军棋盟" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020021889017164.jpg" alt="大将军棋盟">
+                                <div class="intro"><p>大将军棋盟作为一款最新推出的棋牌平台有着实力强劲的团队，平台以安全稳定为中心保障玩家的利益，为了提升玩家的体验平台组建了大规模的客服团队来处理问题，强大的资金实...</p></div>
+                            </div>
+                            <p class="title">大将军棋盟</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/hechimajiang" title="河池麻将" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011887458757.jpg" alt="河池麻将">
+                                <div class="intro"><p>河池麻将是一款非常不错的手机娱乐麻将游戏，这款游戏的内容和玩法都非常的特别，不过玩家依旧可以体验到最原汁原味的河池麻将玩法，精致的游戏画面，不同场次可选，一键登...</p></div>
+                            </div>
+                            <p class="title">河池麻将</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/shijunyouxiguanwang" title="识君游戏官网" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011859494220.jpg" alt="识君游戏官网">
+                                <div class="intro"><p>识君游戏官网在2017年末宣布进军中国，与“识君网络”合作发布旗下游戏的国内官方中文版！开罗游戏的质量想必不用小编多说，一般发布作品之后国内的汉化组都会第一时间...</p></div>
+                            </div>
+                            <p class="title">识君游戏官网</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/wuzhangpaiyouxidating" title="五张牌游戏大厅" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011745828049.jpg" alt="五张牌游戏大厅">
+                                <div class="intro"><p>五张牌游戏大厅英文名ShowHand，又称沙蟹，也有些地方叫同花顺，梭哈等等。五张牌游戏大厅最早流行于我国广东、香港、澳门，此游戏规则简单，但很激烈。玩这个游戏...</p></div>
+                            </div>
+                            <p class="title">五张牌游戏大厅</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/jingdiandoushouqi" title="经典斗兽棋" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011621012750.jpg" alt="经典斗兽棋">
+                                <div class="intro"><p>还记得我们小时候玩过的斗兽棋吗？是不是还是记忆犹新呢？所以棋牌游戏网就带你重温一下经典斗兽棋游戏，精美的游戏画面，难度适宜，还有各种逗趣的音效以及生动有趣的表情...</p></div>
+                            </div>
+                            <p class="title">经典斗兽棋</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/yuhuantongchengyouxidating" title="玉环同城游戏大厅" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011664081084.jpg" alt="玉环同城游戏大厅">
+                                <div class="intro"><p>玉环同城游戏大厅是玉环地区规模最大，玩家最多的棋牌游戏平台，提供同城游游戏有：玉环打通、玉环麻将、玉环80分、玉环两帮、玉环接龙等等。玉环同城游戏中心游戏采用本...</p></div>
+                            </div>
+                            <p class="title">玉环同城游戏大厅</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/xiongmaomajiang" title="熊猫麻将" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011592049605.jpg" alt="熊猫麻将">
+                                <div class="intro"><p>熊猫麻将是专为玩家倾力打造的经典麻将游戏，界面主要以中国风画面为主，陪伴你欢乐每一天。天天有比赛，时时有奖拿！好友房系统最新上线，为你及好友提供稳定、安全的对局...</p></div>
+                            </div>
+                            <p class="title">熊猫麻将</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/gabaguoqipai" title="嘎巴锅棋牌" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011531785647.jpg" alt="嘎巴锅棋牌">
+                                <div class="intro"><p>嘎巴锅棋牌是来自业内顶尖团队悉心制作的3D棋牌竞技中心，不用出门就能够全景享受地道的棋牌娱乐，顶尖团队打造，给玩家高品质的视听感受，真正身临其境的正式体验。其中...</p></div>
+                            </div>
+                            <p class="title">嘎巴锅棋牌</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/chexuan" title="扯旋" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011449458835.jpg" alt="扯旋">
+                                <div class="intro"><p>扯旋玩法跟牌九类似，但用的是扑克牌，并且游戏人数由2-4人转变到2-6人。“牌九”又称“骨牌”，起源于中国宋代，在民间流传较广。牌九每副为32张，用骨头、象牙、...</p></div>
+                            </div>
+                            <p class="title">扯旋</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/80fenshengjituolaji" title="80分升级拖拉机" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011399515649.jpg" alt="80分升级拖拉机">
+                                <div class="intro"><p>80分升级拖拉机是一款非常好玩的纸牌游戏，游戏通过抢先亮主来确定主牌，然后通过庄家方(庄家和其对面的玩家)和抓分方(庄家的左右方)合作看谁先到A，就赢了，拖拉机...</p></div>
+                            </div>
+                            <p class="title">80分升级拖拉机</p>
+                        </a>
+                    </li>
+                    <li class="small">
+                        <a href="/qipai/qqsichongjipaiqi" title="qq四冲记牌器" target="_blank">
+                            <div class="img-desc">
+                                <img src="./images/2020011171687935.jpg" alt="qq四冲记牌器">
+                                <div class="intro"><p>qq四冲记牌器是一款专门为QQ游戏——《四冲》打造的辅助工具。该款QQ四冲记牌器界面小巧、功能实用，能帮助玩家快速的出牌辅助，让你轻轻松松的争上游，使游戏积分位...</p></div>
+                            </div>
+                            <p class="title">qq四冲记牌器</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="row-item4" class="row row-item pb40">
+                <div class="cols">
+                    <div class="item-title">
+                        <div class="item3 title-l"><i class="icon icon-mei"></i>棋牌代理资讯<em>NEWS</em></div>
+                        <a href="/news" class="more">更多<i class="icon icon-arr-right"></i></a>
+                    </div>
+                    <div class="top">
+                        <div class="img-box">
+                            <a href="/news/12440.html" class="active" title="如何在湖南跑得快群里快速致胜？你只需要五点跑得快技巧" target="_blank">
+                                <img src="./images/2020022717586264.jpg" alt="如何在湖南跑得快群里快速致胜？你只需要五点跑得快技巧">
+                                <span class="shijian3"><span>2020-02-27</span></span>
+                            </a>
+                        </div>
+                        <ul class="news1">
+                            <li class="hover" data-shijian="2020-02-27">
+                                <a href="/news/12440.html" title="如何在湖南跑得快群里快速致胜？你只需要五点跑得快技巧" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">如何在湖南跑得快群里快速致胜？你只需要五点跑得快技巧</p>
+                                </a>
+                            </li>
+                            <li data-shijian="2020-02-27">
+                                <a href="/news/12439.html" title="你在默往app麻将群里玩的挺嗨啊！那你搞清楚自动分享战绩功能了吗？" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">你在默往app麻将群里玩的挺嗨啊！那你搞清楚自动分享战绩功能了吗？</p>
+                                </a>
+                            </li>
+                            <li data-shijian="2020-02-27">
+                                <a href="/news/12435.html" title="边锋出品必属精品，原汁原味的杭州三扣一，你参与了吗？" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">边锋出品必属精品，原汁原味的杭州三扣一，你参与了吗？</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bottom">
+                        <ul class="news2">
+                            <li class="hover">
+                                <a href="/news/12431.html" title="麻将代理商业绩如何提升？新手赶紧学起来" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">麻将代理商业绩如何提升？新手赶紧学起来</p>
+                                    <img src="./images/2020022767116709.jpg" alt="麻将代理商业绩如何提升？新手赶紧学起来">
+                                    <span class="shijian2"><span>2020-02-27</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/news/12425.html" title="黄石五十k游戏代理：视频运营的热门类别有哪些？" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">黄石五十k游戏代理：视频运营的热门类别有哪些？</p>
+                                    <img src="./images/2020022757803839.jpg" alt="黄石五十k游戏代理：视频运营的热门类别有哪些？">
+                                    <span class="shijian2"><span>2020-02-27</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/news/12414.html" title="乐山桥牌玩法教学：合理估计牌力，教你如何玩好桥牌二七十" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">乐山桥牌玩法教学：合理估计牌力，教你如何玩好桥牌二七十</p>
+                                    <img src="./images/2020022663054175.jpg" alt="乐山桥牌玩法教学：合理估计牌力，教你如何玩好桥牌二七十">
+                                    <span class="shijian2"><span>2020-02-26</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/news/12413.html" title="回忆杀！黑白棋、空当接龙纸牌，那些年电脑课上偷偷玩过的小游戏" target="_blank">
+                                    <em class="circle"></em>
+                                    <p class="ellipsis">回忆杀！黑白棋、空当接龙纸牌，那些年电脑课上偷偷玩过的小游戏</p>
+                                    <img src="./images/2020022625521360.jpg" alt="回忆杀！黑白棋、空当接龙纸牌，那些年电脑课上偷偷玩过的小游戏">
+                                    <span class="shijian2"><span>2020-02-26</span></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="b-r">
+                            <div class="ad-news">
+                                <a href="/news/12410.html" title="正规棋牌游戏没有完整的运营策略？这篇文章帮你打开思路" target="_blank">
+                                    <img src="./images/2020022669350196.jpg" alt="正规棋牌游戏没有完整的运营策略？这篇文章帮你打开思路">
+                                </a><!--<span class="tag-ad">广告</span>-->
+                                <span class="shijian1">2020-02-26</span>
+                            </div>
+                            <ul class="news3">
+                                <li>
+                                    <em class="circle2"></em>
+                                    <a href="/news/12404.html" title="迪口游戏中的经典玩法攉龙、扎股子，牌友们，就玩它！" target="_blank"><p class="ellipsis">迪口游戏中的经典玩法攉龙、扎股子，牌友们，就玩它！</p></a>
+                                </li>
+                                <li>
+                                    <em class="circle2"></em>
+                                    <a href="/news/12401.html" title="红中麻将连胜技巧大揭底，让你轻轻松松中码" target="_blank"><p class="ellipsis">红中麻将连胜技巧大揭底，让你轻轻松松中码</p></a>
+                                </li>
+                                <li>
+                                    <em class="circle2"></em>
+                                    <a href="/news/12397.html" title="南通人为什么爱玩南通今日长牌？三个原因告诉你" target="_blank"><p class="ellipsis">南通人为什么爱玩南通今日长牌？三个原因告诉你</p></a>
+                                </li>
+                                <li>
+                                    <em class="circle2"></em>
+                                    <a href="/news/12392.html" title="网络棋牌平台开发需求有哪些？围绕这三点，玩家主动找上门" target="_blank"><p class="ellipsis">网络棋牌平台开发需求有哪些？围绕这三点，玩家主动找上门</p></a>
+                                </li>
+                                <li>
+                                    <em class="circle2"></em>
+                                    <a href="/news/12377.html" title="抖抖棋牌代理1字真言，想要玩家离不开就得这样做" target="_blank"><p class="ellipsis">抖抖棋牌代理1字真言，想要玩家离不开就得这样做</p></a>
+                                </li>
+                                <li>
+                                    <em class="circle2"></em>
+                                    <a href="/news/12375.html" title="你用的默往app真的安全吗？不做好这几点小心麻将群被封" target="_blank"><p class="ellipsis">你用的默往app真的安全吗？不做好这几点小心麻将群被封</p></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cols">
+                    <div class="item-title">
+                        <div class="item4 title-l"><i class="icon icon-hei"></i>棋牌游戏攻略<em>GUIDES</em></div>
+                        <a href="/gonglue" class="more">更多<i class="icon icon-arr-right"></i></a>
+                    </div>
+                    <div class="top guide-img"><a href="/news/6653.html" title="棋牌游戏代理怎么进行推广？" target="_blank"><img src="./images/2019061916880518.jpg" alt="棋牌游戏代理怎么进行推广？"></a></div>
+                    <div class="bottom">
+                        <ul class="guides">
+                            <li>
+                                <label>1</label>
+                                <a href="/gonglue/12426.html" title="黄石五十k游戏大厅技巧，高分秘籍免费送！" target="_blank">黄石五十k游戏大厅技巧，高分秘籍免...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                            <li>
+                                <label>2</label>
+                                <a href="/gonglue/12427.html" title="闲来宁夏滑水麻将怎么玩？高手的三个技巧告诉你！" target="_blank">闲来宁夏滑水麻将怎么玩？高手的三个...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                            <li>
+                                <label>3</label>
+                                <a href="/gonglue/12428.html" title="闲来宁夏滑水麻将技巧十句口诀，新手玩家必备！" target="_blank">闲来宁夏滑水麻将技巧十句口诀，新手...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                            <li>
+                                <label>4</label>
+                                <a href="/gonglue/12434.html" title="那些年遍布杭州大街小巷的三扣一，你还记得规则吗？" target="_blank">那些年遍布杭州大街小巷的三扣一，你...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                            <li>
+                                <label>5</label>
+                                <a href="/gonglue/12438.html" title="默往麻将群高手都在用的技巧大公开，快速听牌原来有窍门" target="_blank">默往麻将群高手都在用的技巧大公开，...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                            <li>
+                                <label>6</label>
+                                <a href="/gonglue/12437.html" title="三扣一规则技巧教学，简单实用，提高胜算妥妥的" target="_blank">三扣一规则技巧教学，简单实用，提高...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                            <li>
+                                <label>7</label>
+                                <a href="/gonglue/12442.html" title="跑得快：没有绝对的烂牌，只有在湖南跑得快群里不会玩的人！" target="_blank">跑得快：没有绝对的烂牌，只有在湖南...<span class="right" style="float: right;font-size: 12px;margin-top: 2px;"><img src="./images/shijian.jpg" style="width: 12px;height: 12px;margin-right: 5px;">2020-02-27</span></a>
+                            </li>
+                        </ul>
+                        <div class="ad-right">
+                            <a href="/gonglue/11210.html" title="小白必看！为什么你玩红中赖子麻将不胡牌？" target="_blank"><img src="./images/2019123147441492.jpg" alt="小白必看！为什么你玩红中赖子麻将不胡牌？"></a>
+                            <a href="/gonglue/11547.html" title="会玩赤峰对调只是你的本能，知晓庄家特权才是你的优势" target="_blank"><img src="./images/2019123195552994.jpg" alt="会玩赤峰对调只是你的本能，知晓庄家特权才是你的优势"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="row-item5" class="row row-item pb40">
+                <div class="title-f">
+                    <p><i class="icon icon-xin"></i>专题<em>SEMINAR</em></p>
+                    <a href="/zhuanti" class="more" target="_blank">更多<i class="icon icon-arr-r-white"></i></a>
+                </div>
+                <div class="zhuanti">
+                    <ul>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1015/" title="同城游红十" target="_blank"><img src="./images/2020022727144830.jpg" alt="同城游红十"></a>
+                                <div><p class="ellipsis">同城游红十</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1014/" title="红十怎么玩" target="_blank"><img src="./images/2020022743577415.jpg" alt="红十怎么玩"></a>
+                                <div><p class="ellipsis">红十怎么玩</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1013/" title="三扣一规则" target="_blank"><img src="./images/2020022782145204.jpg" alt="三扣一规则"></a>
+                                <div><p class="ellipsis">三扣一规则</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1012/" title="三扣一" target="_blank"><img src="./images/2020022737459318.jpg" alt="三扣一"></a>
+                                <div><p class="ellipsis">三扣一</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1010/" title="宁夏滑水麻将" target="_blank"><img src="./images/2020022789663795.jpg" alt="宁夏滑水麻将"></a>
+                                <div><p class="ellipsis">宁夏滑水麻将</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1011/" title="黄石五十K" target="_blank"><img src="./images/2020022746276543.jpg" alt="黄石五十K"></a>
+                                <div><p class="ellipsis">黄石五十K</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1007/" title="下围棋的好处" target="_blank"><img src="./images/2020022685236371.jpg" alt="下围棋的好处"></a>
+                                <div><p class="ellipsis">下围棋的好处</p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="v_1">
+                                <a href="/zhuanti/1009/" title="黑白翻转棋" target="_blank"><img src="./images/2020022611244846.jpg" alt="黑白翻转棋"></a>
+                                <div><p class="ellipsis">黑白翻转棋</p></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="row-item7" class="row row-item pb40">
+                <div class="title-f">
+                    <p><i class="icon icon-xin"></i>棋牌游戏代理排行榜<em>RANKING</em></p>
+                    <a href="/top" class="more" target="_blank">更多<i class="icon icon-arr-r-white"></i></a>
+                </div>
+                <div class="rank-box clearfix">
+                    <div class="rank-item clearfix">
+                        <p class="c_green">热门棋牌游戏群</p>
+                        <ul class="rank-list bg_green">
+                            <li class="hover">
+                                <a href="/qun/19650.html" title="【棋棋俱乐部】招总代，最高待遇+扶持活动" target="_blank">
+                                    <div class="ranking"><label class="top1_3">1</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">【棋棋俱乐部】招总代，最高待遇+扶持活动</p>
+                                            <span>66358</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020010398025300(1).jpg" alt="【棋棋俱乐部】招总代，最高待遇+扶持活动"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">【棋棋俱乐部】招总代，最高待遇+扶持活动</p>
+                                                <span>66358</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/26599.html" title="自娱代理两相宜！传奇棋牌-创造经典 无限革新" target="_blank">
+                                    <div class="ranking"><label class="top1_3">2</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">自娱代理两相宜！传奇棋牌-创造经典 无限革新</p>
+                                            <span>60337</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022062815217(1).jpg" alt="自娱代理两相宜！传奇棋牌-创造经典 无限革新"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">自娱代理两相宜！传奇棋牌-创造经典 无限革新</p>
+                                                <span>60337</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/25667.html" title="135棋牌招合伙人，团队扶持" target="_blank">
+                                    <div class="ranking"><label class="top1_3">3</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">135棋牌招合伙人，团队扶持</p>
+                                            <span>37543</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020021760782316(1).jpg" alt="135棋牌招合伙人，团队扶持"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">135棋牌招合伙人，团队扶持</p>
+                                                <span>37543</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/25400.html" title="金达棋牌直招总代里！ 税收返水模式！" target="_blank">
+                                    <div class="ranking"><label>4</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">金达棋牌直招总代里！ 税收返水模式！</p>
+                                            <span>36478</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022626440105(1).jpg" alt="金达棋牌直招总代里！ 税收返水模式！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">金达棋牌直招总代里！ 税收返水模式！</p>
+                                                <span>36478</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/26484.html" title="AG-6up直营招代理，拥金比例55%" target="_blank">
+                                    <div class="ranking"><label>5</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">AG-6up直营招代理，拥金比例55%</p>
+                                            <span>13053</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020021727499329(1).jpg" alt="AG-6up直营招代理，拥金比例55%"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">AG-6up直营招代理，拥金比例55%</p>
+                                                <span>13053</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/26252.html" title="星际首码大金山" target="_blank">
+                                    <div class="ranking"><label>6</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">星际首码大金山</p>
+                                            <span>10141</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022276098862(1).jpg" alt="星际首码大金山"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">星际首码大金山</p>
+                                                <span>10141</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/26511.html" title="至尊棋牌全新模式直招总代" target="_blank">
+                                    <div class="ranking"><label>7</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">至尊棋牌全新模式直招总代</p>
+                                            <span>9583</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020021842218901(1).jpg" alt="至尊棋牌全新模式直招总代"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">至尊棋牌全新模式直招总代</p>
+                                                <span>9583</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/18486.html" title="棋棋俱乐部北京交流群" target="_blank">
+                                    <div class="ranking"><label>8</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">棋棋俱乐部北京交流群</p>
+                                            <span>6155</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022066478608.jpg" alt="棋棋俱乐部北京交流群"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">棋棋俱乐部北京交流群</p>
+                                                <span>6155</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/22822.html" title="棋棋俱乐部需要您的加入诚招一级合伙人" target="_blank">
+                                    <div class="ranking"><label>9</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">棋棋俱乐部需要您的加入诚招一级合伙人</p>
+                                            <span>5590</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/34.png" alt="棋棋俱乐部需要您的加入诚招一级合伙人"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">棋棋俱乐部需要您的加入诚招一级合伙人</p>
+                                                <span>5590</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qun/25177.html" title="大神旗下直招总代理" target="_blank">
+                                    <div class="ranking"><label>10</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">大神旗下直招总代理</p>
+                                            <span>5510</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/83.png" alt="大神旗下直招总代理"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">大神旗下直招总代理</p>
+                                                <span>5510</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rank-item clearfix">
+                        <p class="c_blue">游戏代理新星</p>
+                        <ul class="rank-list bg_blue">
+                            <li class="hover">
+                                <a href="/zhaoshang/18534.html" title="嘎巴锅棋牌游戏代理，棋牌专业问答！" target="_blank">
+                                    <div class="ranking"><label class="top1_3">1</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">嘎巴锅棋牌游戏代理，棋牌专业问答！</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022782147276(1).jpg" alt="嘎巴锅棋牌游戏代理，棋牌专业问答！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">嘎巴锅棋牌游戏代理，棋牌专业问答！</p>
+                                                <span>187</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18536.html" title="黄石五十K棋牌玩法介绍攻略，想要的加我" target="_blank">
+                                    <div class="ranking"><label class="top1_3">2</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">黄石五十K棋牌玩法介绍攻略，想要的加我</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022725599672(1).jpg" alt="黄石五十K棋牌玩法介绍攻略，想要的加我"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">黄石五十K棋牌玩法介绍攻略，想要的加我</p>
+                                                <span>188</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18537.html" title="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！" target="_blank">
+                                    <div class="ranking"><label class="top1_3">3</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022726384674(1).jpg" alt="宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">宁夏滑水麻将钉钉群，麻将棋牌爱好者可加！</p>
+                                                <span>159</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18530.html" title="熊猫麻将招线上推广代理，够胆你就来！" target="_blank">
+                                    <div class="ranking"><label>4</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">熊猫麻将招线上推广代理，够胆你就来！</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022711843458(1).jpg" alt="熊猫麻将招线上推广代理，够胆你就来！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">熊猫麻将招线上推广代理，够胆你就来！</p>
+                                                <span>136</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18531.html" title="同城游红十大力招募推广代理群主，免费培训包上岗！" target="_blank">
+                                    <div class="ranking"><label>5</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">同城游红十大力招募推广代理群主，免费培训包上岗！</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022765100758(1).jpg" alt="同城游红十大力招募推广代理群主，免费培训包上岗！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">同城游红十大力招募推广代理群主，免费培训包上岗！</p>
+                                                <span>186</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18532.html" title="麻将代理推广渠道_高效优化看这里！" target="_blank">
+                                    <div class="ranking"><label>6</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">麻将代理推广渠道_高效优化看这里！</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022757740739(1).jpg" alt="麻将代理推广渠道_高效优化看这里！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">麻将代理推广渠道_高效优化看这里！</p>
+                                                <span>184</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18533.html" title="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！" target="_blank">
+                                    <div class="ranking"><label>7</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">白金岛跑得快代理推广秘籍，你的安全感全都来自这里！</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022799791783(1).jpg" alt="白金岛跑得快代理推广秘籍，你的安全感全都来自这里！"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">白金岛跑得快代理推广秘籍，你的安全感全都来自这里！</p>
+                                                <span>177</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18524.html" title="招代理.想做代理的可以看看" target="_blank">
+                                    <div class="ranking"><label>8</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">招代理.想做代理的可以看看</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/28.png" alt="招代理.想做代理的可以看看"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">招代理.想做代理的可以看看</p>
+                                                <span>226</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18523.html" title="全网招棋牌代理，待遇置顶" target="_blank">
+                                    <div class="ranking"><label>9</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">全网招棋牌代理，待遇置顶</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/46.png" alt="全网招棋牌代理，待遇置顶"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">全网招棋牌代理，待遇置顶</p>
+                                                <span>227</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/zhaoshang/18525.html" title="qpk棋牌王  诚邀实力代理 " target="_blank">
+                                    <div class="ranking"><label>10</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">qpk棋牌王  诚邀实力代理 </p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/93.png" alt="qpk棋牌王  诚邀实力代理 "></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">qpk棋牌王  诚邀实力代理 </p>
+                                                <span>225</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rank-item clearfix">
+                        <p class="c_yellow">热门棋牌游戏下载</p>
+                        <ul class="rank-list bg_yellow">
+                            <li class="hover">
+                                <a href="/game/206.html" title="大嘴填大坑" target="_blank">
+                                    <div class="ranking"><label class="top1_3">1</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">大嘴填大坑</p>
+                                            <span>25073</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022557733830.jpg" alt="大嘴填大坑"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">大嘴填大坑</p>
+                                                <span>25073</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/80.html" title="博雅锄大地" target="_blank">
+                                    <div class="ranking"><label class="top1_3">2</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">博雅锄大地</p>
+                                            <span>25052</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020021961563107.jpg" alt="博雅锄大地"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">博雅锄大地</p>
+                                                <span>25052</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/545.html" title="同城游攉龙" target="_blank">
+                                    <div class="ranking"><label class="top1_3">3</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">同城游攉龙</p>
+                                            <span>25026</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022586339802.jpg" alt="同城游攉龙"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">同城游攉龙</p>
+                                                <span>25026</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/229.html" title="闲来跑得快JPQ" target="_blank">
+                                    <div class="ranking"><label>4</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">闲来跑得快JPQ</p>
+                                            <span>24983</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022586063519.jpg" alt="闲来跑得快JPQ"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">闲来跑得快JPQ</p>
+                                                <span>24983</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/556.html" title="同城游打拱" target="_blank">
+                                    <div class="ranking"><label>5</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">同城游打拱</p>
+                                            <span>24942</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017061942913485.jpg" alt="同城游打拱"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">同城游打拱</p>
+                                                <span>24942</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/727.html" title="博雅湖北棋牌" target="_blank">
+                                    <div class="ranking"><label>6</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">博雅湖北棋牌</p>
+                                            <span>24934</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017071471702935.jpg" alt="博雅湖北棋牌"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">博雅湖北棋牌</p>
+                                                <span>24934</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/730.html" title="同城游古田三副" target="_blank">
+                                    <div class="ranking"><label>7</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">同城游古田三副</p>
+                                            <span>24933</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017071423519177.jpg" alt="同城游古田三副"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">同城游古田三副</p>
+                                                <span>24933</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/3362.html" title="闪闪麻将全集" target="_blank">
+                                    <div class="ranking"><label>8</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">闪闪麻将全集</p>
+                                            <span>24913</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017080259359328.jpg" alt="闪闪麻将全集"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">闪闪麻将全集</p>
+                                                <span>24913</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/27.html" title="皮皮四川麻将" target="_blank">
+                                    <div class="ranking"><label>9</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">皮皮四川麻将</p>
+                                            <span>24907</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017032091744741.jpg" alt="皮皮四川麻将"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">皮皮四川麻将</p>
+                                                <span>24907</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/game/579.html" title="围棋—游戏茶苑" target="_blank">
+                                    <div class="ranking"><label>10</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">围棋—游戏茶苑</p>
+                                            <span>24885</span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2020022511069962.jpg" alt="围棋—游戏茶苑"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">围棋—游戏茶苑</p>
+                                                <span>24885</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rank-item clearfix">
+                        <p class="c_pink">新棋牌游戏群</p>
+                        <ul class="rank-list bg_pink">
+                            <li class="hover">
+                                <a href="/qipai/baijindao" title="白金岛" target="_blank">
+                                    <div class="ranking"><label class="top1_3">1</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">白金岛</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081375626405.jpg" alt="白金岛"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">白金岛</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/tangrenyou" title="唐人游" target="_blank">
+                                    <div class="ranking"><label class="top1_3">2</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">唐人游</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081379742881.jpg" alt="唐人游"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">唐人游</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/xianyi" title="闲逸" target="_blank">
+                                    <div class="ranking"><label class="top1_3">3</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">闲逸</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081380470194.jpg" alt="闲逸"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">闲逸</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/yingle" title="赢乐棋牌" target="_blank">
+                                    <div class="ranking"><label>4</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">赢乐棋牌</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081339858247.jpg" alt="赢乐棋牌"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">赢乐棋牌</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/wanbei" title="玩呗" target="_blank">
+                                    <div class="ranking"><label>5</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">玩呗</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081371810280.jpg" alt="玩呗"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">玩呗</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/shouyingtianxia" title="手赢天下" target="_blank">
+                                    <div class="ranking"><label>6</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">手赢天下</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081338630607.jpg" alt="手赢天下"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">手赢天下</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/xiaoyao" title="小吆" target="_blank">
+                                    <div class="ranking"><label>7</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">小吆</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081368647009.jpg" alt="小吆"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">小吆</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/jinyoushijie" title="金游世界" target="_blank">
+                                    <div class="ranking"><label>8</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">金游世界</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2019052813380947.jpg" alt="金游世界"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">金游世界</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/shanshanyouxi" title="闪闪游戏" target="_blank">
+                                    <div class="ranking"><label>9</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">闪闪游戏</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017081397050330.jpg" alt="闪闪游戏"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">闪闪游戏</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/qipai/qinpeng" title="亲朋" target="_blank">
+                                    <div class="ranking"><label>10</label></div>
+                                    <div class="right">
+                                        <div class="sec1">
+                                            <p class="title ellipsis">亲朋</p>
+                                            <span></span>
+                                        </div>
+                                        <div class="sec2">
+                                            <div class="img"><img src="./images/2017060538618746.jpg" alt="亲朋"></div>
+                                            <div class="txt">
+                                                <p class="title ellipsis">亲朋</p>
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="row-item8" class="row row-item pb40">
+                <div class="title-f">
+                    <p><i class="icon icon-xin"></i>棋牌视觉<em>VISION</em></p>
+                </div>
+                <div class="visions">
+                    <div class="v_1">
+                        <a href="/view/12368.html" title="棋牌美图之古装美女，温婉动人~" target="_blank"><img src="./images/2020022450974183.jpg" alt="棋牌美图之古装美女，温婉动人~"></a>
+                        <div class="title"><p class="ellipsis">棋牌美图之古装美女，温婉动人~</p></div>
+                    </div>
+                    <div class="v_1_2">
+                        <div class="v_2">
+                            <a href="/view/12415.html" title="棋牌美图之宝马奔驰，炫酷汽车你爱吗？" target="_blank"><img src="./images/2020022692779929.jpg" alt="棋牌美图之宝马奔驰，炫酷汽车你爱吗？"></a>
+                            <div class="title"><p class="ellipsis">棋牌美图之宝马奔驰，炫酷汽车你爱吗？</p></div>
+                        </div>
+                        <div class="v_2_2">
+                            <div class="v_3">
+                                <a href="/view/10884.html" title="麻将棋牌游戏平台玩家必备沙雕表情包——雀魂表情包" target="_blank"><img src="./images/2019112291270602.jpg" alt="麻将棋牌游戏平台玩家必备沙雕表情包——雀魂表情包"></a>
+                                <div class="title"><p class="ellipsis">麻将棋牌游戏平台玩家必备沙雕表情包——雀魂表情包</p></div>
+                            </div>
+                            <div class="v_3">
+                                <a href="/view/12432.html" title="棋牌美图：雀魂表情包系列之断幺九表情包！" target="_blank"><img src="./images/2020022714682245.jpg" alt="棋牌美图：雀魂表情包系列之断幺九表情包！"></a>
+                                <div class="title"><p class="ellipsis">棋牌美图：雀魂表情包系列之断幺九表情包！</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v_1">
+                        <a href="/view/11548.html" title="棋牌美图之台球桌上的艳遇，台球加美人~~你心动了吗？" target="_blank"><img src="./images/2019123041543841.jpg" alt="棋牌美图之台球桌上的艳遇，台球加美人~~你心动了吗？"></a>
+                        <div class="title"><p class="ellipsis">棋牌美图之台球桌上的艳遇，台球加美人~~你心动了吗？</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="row-item9" class="row row-item pb40">
+                <div class="title-f">
+                    <p><i class="icon icon-xin"></i>网友正在问<em>QUESTIONS</em></p>
+                </div>
+                <ul class="allwenda">
+                    <li>
+                        <a href="/wenda/1914.html">听说边锋游戏三扣一很好玩？求分享一下规则给我</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1913.html">延边地区有什么好玩的游戏吗？红十怎么玩的？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1911.html">玩跳棋游戏有什么技巧吗？分享一下，每次都输啊</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1910.html">玩麻将用默往app怎么样？不会被封群吧！</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1908.html">求分享一些五子棋游戏的技巧，听说还有外挂？是不是真的</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1906.html">大同有好玩的游戏吗？攉龙游戏大厅怎么样？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1902.html">川麻血战到底有什么技巧吗？要怎么算番？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1901.html">双陆棋为什么会失传啊？要怎么玩？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1900.html">常德的红中麻将怎么算中码？还有一码全中有什么规则？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1897.html">筑志红中麻将房卡怎么买？去哪里找红中麻将群？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1896.html">乐山桥牌二七十游戏怎么算的胡数？感觉好复杂啊</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1895.html">免费的红中麻将房卡有吗？可以到哪里玩红中赖子麻将啊？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1888.html">听说俄罗斯方块还有很多其他的另类玩法，都有哪些？推荐一下</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1887.html">武汉麻将的规则与北京麻将的区别大吗？哪个好玩一点？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1882.html">网上的那种黑白棋技巧，13步必胜技巧管用吗？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1881.html">在什么平台可以玩二人斗地主？有专门组局的二人斗地主群吗？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1880.html">二人斗地主有什么诀窍吗？牌友跟我分享一个斗地主群呗！</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1879.html">用默往的都可以登录不了了吗？网络异常是怎么回事？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1874.html">默往的官方客服电话哪里有？老是给我封号，我要投诉了</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1873.html">濮阳的挤黑五游戏怎么玩的？规则玩法说一下呗</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1872.html">二人麻将怎么打？有专门的玩游戏的群吗？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1869.html">默往封号吗？怎么维护麻将群才能不封啊？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1868.html">默往app手机安卓版哪里有下载？用起来安全吗？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1867.html">务川大贰要怎么认啊？打法也告知一下，牌面有种鬼画符的赶脚</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1866.html">可以分享一下双扣技巧给我嘛？听说有十句技巧口诀，管用吗？</a>
+                    </li>
+                    <li>
+                        <a href="/wenda/1865.html">从小让孩子下围棋有什么好处吗？才四岁的小娃</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="ad_left" style="display: none">
+
+            <a style="position:absolute;top:-20px;left:0;" href="javascript:void(0);" onclick="document.getElementById(&#39;ad_left&#39;).style.display=&#39;none&#39;">关闭</a>
+            <a href="/" target="_blank" rel="nofollow">
+                <img src="/" width="120" height="300">
+            </a>
+
+        </div>
+        <div id="ad_right" style="display: none">
+            <a style="position:absolute;top:-20px;right:0;" href="javascript:void(0);" onclick="document.getElementById(&#39;ad_right&#39;).style.display=&#39;none&#39;">关闭</a>
+            <a href="/" target="_blank" rel="nofollow">
+                <img src="/" width="120" height="300">
+            </a>
+        </div>
+    </div>
+</div>
+<script src="~/js/idangerous.swiper2.7.6.min.js"></script>
+
+<script src="~/js/index.js"></script>
+
+
+<script>
+    $('.panel-r').show();
+    $(window).scroll(function () {
+        var top = $(document).scrollTop();
+        top >= 0 ? $('.panel-r').show() : $('.panel-r').hide();
+    })
+</script>
+
+<script>
+    $('#fast_btn').click(function () {
+        if ($('#fast_sellect').is(':hidden')) {
+            $('#fast_sellect').show();
+        } else {
+            $('#fast_sellect').hide();
+        }
+    }
+    );
+    $('#fast').change(function () {
+        $('#xq_content').val($('#fast').val());
+    })
+
+    function validate_xq() {
+        var content = $("#xq_content").val();
+        var wx_name = $("#wx_name").val();
+        var phone = $("#phone").val();
+        if (!content || !wx_name || !phone) {
+            alert('请填写完整所有信息');
+            return false;
+        }
+        $.post('/api/subxuqiu', { content: content, wx_name: wx_name, phone: phone }, function (e) {
+            if (e.error == 1) {
+                alert(e.msg);
+                return false;
+            } else {
+                alert(e.msg);
+                window.location.reload();
+            }
+        })
+    }
+
+</script>
+<script>
+    var is_login = "0";
+    var loginUrl = "/passport/login";
+    var registerUrl = "/passport/register";
+    $('#search_type li').click(function () {
+        var str = $(this).html();
+        var val = $(this).val();
+        $('#selected').html(str);
+        $('#selected').attr('type', val);
+        $('#type').val(val);
+    });
+</script>
+<script>
+    //统计
+    //var _hmt = _hmt || [];
+    //(function () {
+    //    var hm = document.createElement("script");
+    //    hm.src = "https://hm.baidu.com/hm.js?62e88b205660b95da463fc0a5ca7c885";
+    //    var s = document.getElementsByTagName("script")[0];
+    //    s.parentNode.insertBefore(hm, s);
+    //})();
+
+    //// 自动推送
+    //(function () {
+    //    var bp = document.createElement('script');
+    //    var curProtocol = window.location.protocol.split(':')[0];
+    //    if (curProtocol === 'https') {
+    //        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    //    }
+    //    else {
+    //        bp.src = 'https://push.zhanzhang.baidu.com/push.js';
+    //    }
+    //    var s = document.getElementsByTagName("script")[0];
+    //    s.parentNode.insertBefore(bp, s);
+    //})();
+    //$('body').click(function () {
+    //    $('.sub-nav').hide();
+    //});
+    //$(window).on('scroll', function () {
+    //    $('.sub-nav').hide();
+    //})
+</script>
+<script>
+    $('.qqkefu').mouseover(function () {
+        $('.qqkefu_wenzi').show();
+    });
+    $('.qqkefu').mouseout(function () {
+        $('.qqkefu_wenzi').hide();
+    });
+    $('.backTop1').click(function () {
+        $('body,html').animate({ scrollTop: 0 }, 500);
+    });
+    $('.platform-sm').mouseover(function () {
+        if ($(this).next().is(':hidden')) {
+            $(this).next().show();
+        } else {
+            $(this).next().hide();
+        }
+    });
+</script>
+<script>
+    $(function () {
+        /*var bg_l=($(window).width()-1100)/2;
+        var bg_r=($(window).width()-1100)/2;
+        $('.bg_l').css('width',bg_l);
+        $('.bg_r').css('width',bg_r);*/
+        $('.active-hide').click(function () {
+            $(this).closest('.activity').addClass('show');
+        });
+        $('.btn-sq').click(function () {
+            $(this).closest('.activity').removeClass('show');
+        });
+    });
+    $('.Close').click(function () {
+        $('body').removeClass('gg_bg');
+        $('#top_gg').hide();
+        $('.bg_l').hide();
+        $('.bg_r').hide();
+        $('.Close').hide();
+        $('.m1200').css('width', '100%');
+        $('.header').css('width', '100%');
+        $('.header-top').css('width', '100%');
+    });
+</script>
+<script type="text/javascript">
+    var strKey = "strKey";
+    var storage = window.localStorage;
+
+    function onStart() {
+        if (storage.getItem(strKey) != null) {
+            alert(storage.getItem(strKey) + 'localStorage');
+        } else if (Cookie.read(strKey) != null) {
+            alert(Cookie.read(strKey) + 'cookie');
+        }
+    }
+    function bendihuancun() {
+        var strValue = document.getElementById("username").value;
+        if (storage) {
+            storage.setItem(strKey, strValue);
+        } else {
+            Cookie.write(strKey, strValue);
+        }
+    }
+
+    $('.news2 li').mouseover(function () {
+        $('.shijian2').hide();
+        $(this).children().children('.shijian2').show();
+    });
+    $('.news1 li').mouseover(function () {
+        $('.shijian3 span').text($(this).data('shijian'));
+    });
+</script>

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - qipaiqun</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/index.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/css/right_bottom.css" rel="stylesheet" />
+    <script src="~/js/jquery.min.js"></script>
+
+</head>
+<body class="gg_bg">
+    <header>
+        <div class="header">
+            <div class="header-top">
+                <div class="wrap">
+                    <ul class="l-type" style="padding: 0;margin-top: 4px;">
+                    </ul>
+                    <!-- <div class="t-left" style="float:left;font-size: 12px;">棋牌游戏网qipaiqun.com Copyright © 2015-2029 琼ICP备18002949号-3凌隆网络科技（海南）有限公司版权所有</div> -->
+                    <!--?php if (time() < strtotime("2020-02-01")) : ?-->
+                    <div class="t-left" style="float:left;font-size: 12px;color: red;"><a href="#" target="__blank">2020棋牌用户暴增，代理推广的最佳时期！</a></div>
+                    <!--?php endif; ?-->
+                    <div class="t-right">
+                        <a href="/passport/login">登录</a> | <a href="/passport/register">注册</a>
+
+                        <div class="platform">
+                            <span class="platform-sm">广告投放咨询微信wshang1234</span>
+                            <img src="~/images/1581484384417_9999999.jpg" alt="首页通屏背景图申请" style="display: none;left: 70px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-middle wrap">
+                <div class="logo"><a href="#"><img src="~/images/logo.png" alt="棋牌群"></a></div>
+                <div class="search-box">
+                    <div class="search-keyword">
+                        <div class="part">
+                            <span id="selected">全部</span>
+                            <i class="icon icon-green-sj"></i>
+                            <div id="type-box">
+
+                                <ul id="search_type" class="search-ul">
+                                    <span class="sanjiao"></span>
+                                    <li value="0">全部</li>
+                                    <li value="1">棋牌群</li>
+                                    <li value="2">棋牌代理</li>
+                                    <li value="3">棋牌游戏平台</li>
+                                    <li value="4">棋牌问答</li>
+                                    <li value="5">攻略资讯</li>
+                                    <li value="6">棋牌游戏下载</li>
+                                    <li value="7">专题标签</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <form id="search_form" action="/search" method="get">
+                            <input id="type" name="type" value="0" type="hidden">
+                            <input id="search_txt" name="key" type="text" placeholder="请输入关键字搜索">
+                            <button type="submit"><i class="icon icon-search-white"></i></button>
+                        </form>
+                    </div>
+                    <div class="search-list">
+                    </div>
+                </div>
+                <div class="header-publish"><a href="#"><img src="~/images/fabu.gif"></a></div>
+            </div>
+            <div class="header-bottom">
+                <div class="wrap">
+                    <ul class="menu">
+                        <li class="cur" onmouseover="$('.sub-nav').hide();">
+                            <a href="#"><span>首页</span><em>INDEX</em></a>
+                        </li>
+                        <li onmouseover="$('.sub-nav').hide();">
+                            <a href="/qun"><span>棋牌游戏群</span><em>GROUP</em></a>
+                        </li>
+                        <li onmouseover="$('.sub-nav').hide();">
+                            <a href="/zhaoshang"><span>棋牌游戏代理</span><em>PROXY</em></a>
+                        </li>
+                        <li onmouseover="$('.sub-nav').hide();">
+                            <a href="/qipai"><span>游戏代理平台</span><em>PLATFORM</em></a>
+                        </li>
+                        <li>
+                            <a href="/news" onmouseover="$(this).next().show();"><span>行业资讯</span><em>NEWS</em></a>
+
+                            <div class="sub-nav" style="display: none;">
+                                <a href="/gonglue">棋牌游戏攻略</a>
+                                <a href="/tuiguang">运营推广</a>
+                                <a href="/zatan">棋牌杂谈</a>
+                                <a href="/wenda">棋牌问答</a>
+                            </div>
+                        </li>
+                        <li onmouseover="$('.sub-nav').hide();">
+                            <a href="/zhuanti"><span>热门专题</span><em>QUESTION</em></a>
+                        </li>
+                        <li onmouseover="$('.sub-nav').hide();">
+                            <a href="/top"><span>代理排行榜</span><em>RANKING</em></a>
+                        </li>
+                        <li onmouseover="$('.sub-nav').hide();">
+                            <a href="/game"><span>棋牌游戏下载</span><em>PLATFORM</em></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+
+        <div class="footer">
+
+            <div class="ui-friend">
+                <div class="g-inner">
+                    <ul class="ui-friend__list ui-lineList ext-friend">
+                        <li class="ui-lineList__item"><span class="ui-lineList__tit">友情链接</span></li>
+                        <li class="ui-lineList__item"><a href="">棋牌游戏代理</a></li>
+                        <li class="ui-lineList__item"><a href="/qipai">棋牌游戏平台</a></li>
+                        <li class="ui-lineList__item"><a href="/">棋牌游戏</a></li>
+                        <li class="ui-lineList__item"><a href="/qipai">棋牌</a></li>
+                        <li class="ui-lineList__item"><a href="/zhuanti/164">正规棋牌游戏</a></li>
+                        <li class="ui-lineList__item"><a href="">电脑技术百科</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="dwCommonFooter ">
+                <div class="dwCommonFooter__row">
+                    <a href="" target="_blank">首页</a><span class="dwCommonFooter__split">|</span>
+                    <a href="qipai" target="_blank">棋牌游戏平台</a><span class="dwCommonFooter__split">|</span>
+                    <a href="zhuanti" target="_blank">棋牌游戏大全</a><span class="dwCommonFooter__split">|</span>
+                    <a href="qun" target="_blank">棋牌群</a><span class="dwCommonFooter__split">|</span>
+                    <a href="mianze" target="_blank">免责声明</a><span class="dwCommonFooter__split">|</span>
+                    广告热线：17375715239 <span class="dwCommonFooter__split">|</span> <a href="https://kefu2.ziyun.com.cn/vclient/chat/?websiteid=170874&amp;wc=de12fc" target="_blank">在线客服</a>
+                </div>
+                <div class="dwCommonFooter__row">
+                    <p>
+                        <span class="dwCommonFooter__txt" target="_blank">找棋牌游戏代理，找棋牌群，找棋牌游戏，就上棋牌群网-深耕棋牌行业的资源共享平台</span>
+                    </p>
+                    <p>
+                        <span class="dwCommonFooter__txt">Copyright © 2015-2029 <a href="http://www.beian.miit.gov.cn" rel="nofollow">琼ICP备18002949号-3</a> <a href="https://skin.qipaiqun.com/pc/images/linglong.png" target="_blank">琼网文【2018】9486-834号</a></span>
+                        <span class="dwCommonFooter__txt" style="clear: both;display: block;margin-top: 5px;">声明：棋牌群网为交流平台，棋牌游戏内容为用户创造，如有法律违规或侵权请联系我们删除</span>
+                    </p>
+                </div>
+                <div class="dwCommonFooter__row dwCommonFooter__row--approve">
+                    <p>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度棋牌游戏益脑，沉迷棋牌游戏伤身；合理安排时间，享受健康生活。</p>
+                    <p style="font-weight: bold;font-size: 16px">严惩黑恶社会犯罪，弘扬社会正义</p>
+                </div>
+                <div class="dwCommonFooter__row dwCommonFooter__row--logo">
+                    <img src="https://skin.qipaiqun.com/pc/images/footer_png_logo.png" style="margin-right: 20px;margin-bottom: 14px;">
+                    <img src="https://skin.qipaiqun.com/pc/images/footer_png_kefu.png" height="85" alt="58棋牌客服微信号">
+                    <a key="58c25ceeefbfb067bab5434b" logo_size="124x47" logo_type="business" href="javascript:;"><img src="//static.anquan.org/static/outer/image/hy_124x47.png?id=www.qipaiqun.com?t=38" alt="安全联盟认证" width="124" height="47" style="border: none;"></a>
+                    <a href="javascript:;"><img src="https://skin.qipaiqun.com/pc/images/footer_png3.png"></a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/public.js"></script>
+    <script src="~/js/push.js"></script>
+    <script src="~/js/right_bottom.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
